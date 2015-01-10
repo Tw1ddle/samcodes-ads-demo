@@ -1,0 +1,12 @@
+[submodule "lib/gamecenter"]
+	path = lib/gamecenter
+url=https://github.com/openfl/gamecenter.git
+[submodule "lib/lindengoogleplay"]
+	path = lib/lindengoogleplay
+	url = https://github.com/sergey-miryanov/linden-google-play.git
+[submodule "lib/samcodesgamecircle"]
+	path = lib/samcodesgamecircle
+	url = https://github.com/Tw1ddle/HaxeGameCircle.git
+[submodule "lib/ruechartboost"]
+	path = lib/ruechartboost
+	url = https://github.com/Tw1ddle/RueChartboost.git
