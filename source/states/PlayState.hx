@@ -20,14 +20,14 @@ class PlayState extends FlxState {
 	}
 	
 	public function clearLog():Void {
-		adEventText.text = "Ready...";
+		adEventText.text = "Waiting...";
 	}
 	
 	public function new():Void {
 		super();
 		destroySubStates = false;
 		
-		adEventText = new TextItem(0, 0, "Ready...", 12);
+		adEventText = new TextItem(0, 0, "Initializing...", 12);
 		add(adEventText);
 		
 		uiCamera = new FlxCamera(0, 0, Std.int(FlxG.width), Std.int(FlxG.height));
@@ -38,6 +38,7 @@ class PlayState extends FlxState {
 		AdsWrapper.init();
 		#if chartboostads
 		AdsWrapper.setListener(new SimpleChartboostListener(this));
+		addText("Set listener");
 		#end
 		
 		sampleSubState = new SampleSubState(this);
