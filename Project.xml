@@ -4,7 +4,10 @@
 	
 	<meta title="HaxeChartboostDemo" package="uk.co.samcodes.haxechartboostdemo" version="1.0.0" company="Sam Twidale" />
 	<app file="HaxeChartboostDemo" main="Main" />
-
+	
+	<set name="chartboostads" if="android" />
+	<set name="chartboostads" if="ios" />
+	
 	<!--------------------------------WINDOW SETTINGS------------------------------->
 	
 	<!--These window settings apply to all targets-->
@@ -35,18 +38,20 @@
 	<assets path="assets/sounds" type="sound" if="cpp">
 	</assets>
 	<assets path="assets/fonts">
-		<font path="UpheavalPro.ttf" id="upheaval" />
+		<font path="pf_westa_seven.ttf" id="westa_seven" />
 	</assets>
 	
 	<!--------------------------------LIBRARIES------------------------------------->
 	
 	<haxelib name="flixel" />
 	
-	<!--
-	<include path="../samcodeschartboost/include.xml" />
-	<setenv name="ChartboostID" value="547476fc04b0167eb696c4d7" />
-	<setenv name="ChartboostSignature" value="14a52ad707805302ea9501860aa14eb7edeee486" />
-	-->
+	<section if="chartboostads">
+		<setenv name="CHARTBOOSTADS" />
+		<haxedef name="chartboostads"  />
+		<include path="lib/samcodes-chartboost/include.xml" />
+		<setenv name="ChartboostAppId" value="54b1d0fd43150f628599e578" />
+		<setenv name="ChartboostAppSignature" value="a1d6bae2c6697b620ac820df03a44ee2adf22ef1" />
+	</section>
 	
 	<!---------------------------------HAXEDEFINES---------------------------------->
 	
@@ -84,11 +89,10 @@
 	
 	<!---------------------------------CUSTOM---------------------------------->
 	
-	<!-- Custom default android target SDK -->
-	<android target-sdk-version="19" />
-	
 	<!--The swf version should be at least 11.2 without FLX_NO_MOUSE_ADVANCED -->
 	<set name="SWF_VERSION" value="11.2" />
 	
-	<template path="android/AndroidManifest.xml" rename="AndroidManifest.xml" />
+	<section if="android">
+		<template path="android/AndroidManifest.xml" rename="AndroidManifest.xml" />
+	</section>
 </project>

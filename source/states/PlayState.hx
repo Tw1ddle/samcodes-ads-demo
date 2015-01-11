@@ -1,47 +1,48 @@
-package states ;
+package states;
 
-import ads.MyChartboostListener;
+import ads.AdsWrapper;
+import ads.SimpleChartboostListener;
 import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxState;
 import flixel.util.FlxColor;
-import source.states.SampleSubState;
+import states.SampleSubState;
 
 class PlayState extends FlxState {
-	public var uiCamera:FlxCamera;
+	private var uiCamera:FlxCamera;	
+	private var adEventText:TextItem;
 	
-	public var interstitialSubState:InterstitialSubState;
+	public var adFocusSubState:AdFocusSubState;
 	public var sampleSubState:SampleSubState;
 	
-	public function showInterstitial(id:String):Void {
-		Chartboost.showInterstitial(id);
+	public function addText(text:String):Void {
+		adEventText.text = text + "\n" + adEventText.text;
 	}
 	
-	override public function create():Void {
-		super.create();
-		
-		persistentDraw = true;
-		persistentUpdate = true;
+	public function clearLog():Void {
+		adEventText.text = "Ready...";
+	}
+	
+	public function new():Void {
+		super();
 		destroySubStates = false;
+		
+		adEventText = new TextItem(0, 0, "Ready...", 12);
+		add(adEventText);
 		
 		uiCamera = new FlxCamera(0, 0, Std.int(FlxG.width), Std.int(FlxG.height));
 		uiCamera.bgColor = FlxColor.TRANSPARENT;
 		FlxG.cameras.add(uiCamera);
 		FlxCamera.defaultCameras = [uiCamera];
 		
+		AdsWrapper.init();
+		#if chartboostads
+		AdsWrapper.setListener(new SimpleChartboostListener(this));
+		#end
+		
 		sampleSubState = new SampleSubState(this);
-		interstitialSubState = new InterstitialSubState(this);
+		adFocusSubState = new AdFocusSubState(this);
 		
 		openSubState(sampleSubState);
-		
-		Chartboost.setListener(new MyChartboostListener(this));
-	}
-	
-	override public function update(dt:Float):Void {		
-		super.update(dt);
-	}
-	
-	override public function draw():Void {
-		super.draw();
 	}
 }

@@ -12,7 +12,8 @@ import flixel.system.scaleModes.RatioScaleMode;
 import openfl.system.Capabilities;
 import states.PlayState;
 
-class Main extends Sprite {
+class Main extends Sprite
+{
 	var gameWidth:Int = 800; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	var gameHeight:Int = 500; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	
