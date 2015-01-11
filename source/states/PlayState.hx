@@ -35,12 +35,13 @@ class PlayState extends FlxState {
 		FlxG.cameras.add(uiCamera);
 		FlxCamera.defaultCameras = [uiCamera];
 		
+		AdsWrapper.init();
+		addText("Setup bindings...");
+		
 		#if chartboostads
 		AdsWrapper.setListener(new SimpleChartboostListener(this));
 		addText("Set listener");
 		#end
-		AdsWrapper.init();
-		addText("Initialized ads");
 		
 		sampleSubState = new SampleSubState(this);
 		adFocusSubState = new AdFocusSubState(this);
