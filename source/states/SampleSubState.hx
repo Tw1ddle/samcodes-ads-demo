@@ -15,7 +15,7 @@ class SampleSubState extends FlxSubState
 	private var created: Bool = false;
 	private var game: PlayState;
 	
-	private var buttonsGroup: FlxTypedSpriteGroup<TextButton>;
+	private var buttonsGroup: FlxSpriteGroup;
 	private var cacheInterstitialButton: TextButton;
 	private var showInterstitialButton: TextButton;
 	private var cacheMoreAppsButton: TextButton;
@@ -35,7 +35,7 @@ class SampleSubState extends FlxSubState
 		destroySubStates = false;
 		
 		if(!created) {			
-			buttonsGroup = new FlxTypedSpriteGroup<TextButton>();
+			buttonsGroup = new FlxSpriteGroup();
 			
 			cacheInterstitialButton = new TextButton(0, 0, "Cache Interstitial", onCacheInterstitialClick);
 			showInterstitialButton = new TextButton(0, 0, "Show Interstitial", onShowInterstitialClick);
