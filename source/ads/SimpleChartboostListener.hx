@@ -21,7 +21,7 @@ class SimpleChartboostListener extends ChartboostListener
 	
 	private function resumeGame():Void {
 		if (game.subState == game.adFocusSubState) {
-			game.openSubState(game.sampleSubState); // Note this works fine here but won't work once there are nested substates
+			game.openSubState(game.sampleSubState); // Note this works fine for now but won't work if there were nested substates
 		}
 	}
 	

@@ -49,8 +49,10 @@
 		<setenv name="CHARTBOOSTADS" />
 		<haxedef name="chartboostads"  />
 		<include path="lib/samcodes-chartboost/include.xml" />
-		<setenv name="ChartboostAppId" value="54b1d0fd43150f628599e578" />
-		<setenv name="ChartboostAppSignature" value="a1d6bae2c6697b620ac820df03a44ee2adf22ef1" />
+		
+		<!-- Enter your app id and app signature here for Android! Enter your ids in Chartboost.init call on iOS -->
+		<setenv name="ChartboostAppId" value="YOUR_ID" />
+		<setenv name="ChartboostAppSignature" value="YOUR_SIG" />
 	</section>
 	
 	<!---------------------------------HAXEDEFINES---------------------------------->
