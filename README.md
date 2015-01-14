@@ -22,11 +22,13 @@ For iOS pass the app identifier and signature in the Chartboost init call:
 Chartboost.init("your_app_id", "your_app_signature");
 ```
 
-Build the app. When an ad is visible the game should enter the "Ad Focused Substate", else it should be in the "Game Substate". Press the buttons at the bottom to operate.
+Build the app. By default it will use the bundled Chartboost library and submodules. If you want to build against the haxelib, install that and adjust the included library in Project.xml.
+
+When an ad is visible the app should enter the "Ad Focused Substate", else it should be in the "Game Substate". Press the buttons at the bottom to use it.
 
 ![](screenshots/main.png?raw=true)
 
 ### Notes ###
 If the demo does not look like it should or crashes then it may be due to a HaxeFlixel rendering bug. If problems persist then try building against a dev branch of HaxeFlixel or open an issue.
 
-For running on iOS, you may need to drag your ```libChartboost.a``` into the "link binaries with libraries" section under the "build phases" tab in Xcode.
+For running on iOS, you must remember to drag your ```libChartboost.a``` into the "link binaries with libraries" section under the "build phases" tab in Xcode.
