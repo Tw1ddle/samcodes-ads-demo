@@ -15,8 +15,15 @@ class AdsWrapper
 		Chartboost.init(); // For Android you set the appID and appSignature in your Project.xml
 		#end
 		#if ios
-		// Enter your app id and app signature here for iOS! Enter your ids in project.xml for Android -->
-		Chartboost.init("YOUR_ID", "YOUR_SIG");
+		// Enter your app id and app signature here for iOS! Enter your ids in your Project.xml for Android
+		var appId: String = "YOUR_ID";
+		var appSignature:String = "YOUR_SIG";
+		
+		if (appId == "YOUR_ID" || appSignature == "YOUR_SIG") {
+			throw "You have not added your Chartboost iOS app id or app signature. Add them in AdsWrapper.hx!";
+		}
+		
+		Chartboost.init(appId, appSignature);
 		#end
 		
 		#end
