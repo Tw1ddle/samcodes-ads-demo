@@ -48,7 +48,10 @@
 	<section if="chartboostads">
 		<setenv name="CHARTBOOSTADS" />
 		<haxedef name="chartboostads"  />
-		<include path="lib/samcodes-chartboost/include.xml" />
+		
+		<!-- Make sure to change this line to whatever version of the Chartboost module you want to build against! -->
+		 <include path="lib/samcodes-chartboost/include.xml" /> 
+		<!-- <haxelib name="samcodes-chartboost" /> -->
 		
 		<!-- Enter your app id and app signature here for Android! Enter your ids in Chartboost.init call on iOS -->
 		<setenv name="ChartboostAppId" value="YOUR_ID" />
