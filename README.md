@@ -26,6 +26,8 @@ Build the app. When an ad is visible the app should enter the "Ad Focused Substa
 
 ![](screenshots/main.png?raw=true)
 
+![](screenshots/interstitial.png?raw=true)
+
 ### Notes ###
 If the demo does not look like it should or crashes then it may be due to a HaxeFlixel rendering bug. If problems persist then try building against a dev branch of HaxeFlixel or open an issue.
 
