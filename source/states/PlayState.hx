@@ -1,6 +1,7 @@
 package states;
 
 import ads.AdsWrapper;
+import ads.SimpleAdMobListener;
 import ads.SimpleChartboostListener;
 import flixel.FlxCamera;
 import flixel.FlxG;
@@ -40,7 +41,11 @@ class PlayState extends FlxState {
 		
 		#if chartboostads
 		AdsWrapper.setListener(new SimpleChartboostListener(this));
-		addText("Set listener");
+		addText("Set Chartboost listener");
+		#end
+		#if admobads
+		AdsWrapper.setListener(new SimpleAdMobListener(this));
+		addText("Set AdMob listener");
 		#end
 		
 		sampleSubState = new SampleSubState(this);

@@ -23,6 +23,8 @@ class SampleSubState extends FlxSubState
 	private var cacheRewardedVideoButton: TextButton;
 	private var showRewardedVideoButton: TextButton;
 	private var clearTextLogButton: TextButton;
+	private var showBannerButton:TextButton;
+	private var hideBannerButton:TextButton;
 	
 	public function new(game:PlayState) {
 		super();
@@ -37,6 +39,8 @@ class SampleSubState extends FlxSubState
 		if(!created) {			
 			buttonsGroup = new FlxSpriteGroup();
 			
+			showBannerButton = new TextButton(0, 0, "Show Banner", onShowBannerClick);
+			hideBannerButton = new TextButton(0, 0, "Hide Banner", onHideBannerClick);
 			cacheInterstitialButton = new TextButton(0, 0, "Cache Interstitial", onCacheInterstitialClick);
 			showInterstitialButton = new TextButton(0, 0, "Show Interstitial", onShowInterstitialClick);
 			cacheMoreAppsButton = new TextButton(0, 0, "Cache More Apps", onCacheMoreAppsClick);
@@ -45,8 +49,14 @@ class SampleSubState extends FlxSubState
 			showRewardedVideoButton = new TextButton(0, 0, "Show Video", onShowRewardedVideoClick);
 			clearTextLogButton = new TextButton(0, 0, "Clear Text Log", onClearTextLogClick);
 			
+			#if chartboostads
+			var buttons = [cacheInterstitialButton, showInterstitialButton, cacheMoreAppsButton, showMoreAppsButton, cacheRewardedVideoButton, showRewardedVideoButton, clearTextLogButton];
+			#elseif admobads
+			var buttons = [cacheInterstitialButton, showInterstitialButton, showBannerButton, hideBannerButton, clearTextLogButton];
+			#end
+			
 			var x = 0;
-			for (button in [cacheInterstitialButton, showInterstitialButton, cacheMoreAppsButton, showMoreAppsButton, cacheRewardedVideoButton, showRewardedVideoButton, clearTextLogButton]) {
+			for (button in buttons) {
 				button.x = x;
 				button.scale.set(1, 4);
 				button.updateHitbox();
@@ -104,6 +114,14 @@ class SampleSubState extends FlxSubState
 		game.adFocusSubState.location = AdLocations.SAMPLE_REWARDED_VIDEO_LOCATION;
 		game.adFocusSubState.init();
 		game.openSubState(game.adFocusSubState);
+	}
+	
+	private function onShowBannerClick():Void {
+		AdsWrapper.showBanner(AdLocations.DEMO_BANNER_LOCATION);
+	}
+	
+	private function onHideBannerClick():Void {
+		AdsWrapper.hideBanner(AdLocations.DEMO_BANNER_LOCATION);
 	}
 	
 	private function onClearTextLogClick():Void {

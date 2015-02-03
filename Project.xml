@@ -2,11 +2,14 @@
 <project>
 	<!------------------------------APPLICATION SETTINGS---------------------------->
 	
-	<meta title="HaxeChartboostDemo" package="uk.co.samcodes.haxechartboostdemo" version="1.0.0" company="Sam Twidale" />
-	<app file="HaxeChartboostDemo" main="Main" />
+	<meta title="HaxeAdsDemo" package="uk.co.samcodes.haxeadsdemo" version="1.1.0" company="Sam Twidale" />
+	<app file="HaxeAdsDemo" main="Main" />
 	
+	<!-- This demo supports testing use of one ad network at a time -->
 	<set name="chartboostads" if="android" />
 	<set name="chartboostads" if="ios" />
+	<!-- <set name="admobads" if="android" /> -->
+	<!-- <set name="admobads" if="ios" /> -->
 	
 	<!--------------------------------WINDOW SETTINGS------------------------------->
 	
@@ -47,15 +50,28 @@
 	
 	<section if="chartboostads">
 		<setenv name="CHARTBOOSTADS" />
-		<haxedef name="chartboostads"  />
+		<haxedef name="chartboostads" />
 		
 		<!-- Make sure to change this line to whatever version of the Chartboost module you want to build against! -->
-		 <include path="lib/samcodes-chartboost/include.xml" /> 
+		<include path="lib/samcodes-chartboost/include.xml" /> 
 		<!-- <haxelib name="samcodes-chartboost" /> -->
 		
 		<!-- Enter your app id and app signature here for Android! Enter your ids in Chartboost.init call on iOS -->
 		<setenv name="ChartboostAppId" value="YOUR_ID" />
 		<setenv name="ChartboostAppSignature" value="YOUR_SIG" />
+	</section>
+	
+	<section if="admobads">
+		<setenv name="ADMOBADS" />
+		<haxedef name="admobads" />
+		
+		<!-- Make sure to change this line to whatever version of the AdMob module you want to build against! -->
+		<include path="lib/samcodes-admob/include.xml" /> 
+		<!-- <haxelib name="samcodes-admob" /> -->
+		
+		<!-- Set this if you want to use test ads on a particular device -->
+		<!-- Your test id will appear in logcat. Refer to AdMob documentation --> 
+		<setenv name="AdmobTestDeviceId" value="YOUR_HASHED_TEST_DEVICE_ID" />
 	</section>
 	
 	<!---------------------------------HAXEDEFINES---------------------------------->

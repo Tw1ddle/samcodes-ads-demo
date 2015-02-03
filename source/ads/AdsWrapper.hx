@@ -5,7 +5,12 @@ import extension.chartboost.Chartboost;
 import extension.chartboost.ChartboostListener;
 #end
 
-// A wrapper in case I want to switch to another ads service easily in the future
+#if admobads
+import extension.admob.AdMob;
+import extension.admob.AdMobListener;
+#end
+
+// A wrapper so I can switch between ads services easily
 class AdsWrapper
 {
 	public static function init():Void {
@@ -27,6 +32,10 @@ class AdsWrapper
 		#end
 		
 		#end
+		
+		#if admobads
+		AdMob.init();
+		#end
 	}
 	
 	#if chartboostads
@@ -35,9 +44,31 @@ class AdsWrapper
 	}
 	#end
 	
+	#if admobads
+	public static function setListener(listener:AdMobListener):Void {
+		AdMob.setListener(listener);
+	}
+	#end
+	
+	public static function showBanner(id:String):Void {
+		#if admobads
+		AdMob.showBanner(id);
+		#end
+	}
+	
+	public static function hideBanner(id:String):Void {
+		#if admobads
+		AdMob.hideBanner(id);
+		#end
+	}
+	
 	public static function showInterstitial(id:String):Void {
 		#if chartboostads
 		Chartboost.showInterstitial(id);
+		#end
+		
+		#if admobads
+		AdMob.showInterstitial(id);
 		#end
 	}
 
@@ -45,11 +76,19 @@ class AdsWrapper
 		#if chartboostads
 		Chartboost.cacheInterstitial(id);
 		#end
+		
+		#if admobads
+		AdMob.cacheInterstitial(id);
+		#end
 	}
 
 	public static function hasCachedInterstitial(id:String):Bool {
 		#if chartboostads
 		return Chartboost.hasCachedInterstitial(id);
+		#end
+		
+		#if admobads
+		return AdMob.hasCachedInterstitial(id);
 		#end
 		
 		return false;
