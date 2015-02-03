@@ -34,7 +34,12 @@ class AdsWrapper
 		#end
 		
 		#if admobads
+		#if android
 		AdMob.init();
+		#end
+		#if ios
+		AdMob.init("YOUR_HASHED_TEST_DEVICE_ID");
+		#end
 		#end
 	}
 	
