@@ -46,6 +46,8 @@ class PlayState extends FlxState {
 		#if admobads
 		AdsWrapper.setListener(new SimpleAdMobListener(this));
 		addText("Set AdMob listener");
+		
+		AdsWrapper.setBannerPosition(BannerPosition.TOP);
 		#end
 		
 		sampleSubState = new SampleSubState(this);

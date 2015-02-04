@@ -10,6 +10,11 @@ import extension.admob.AdMob;
 import extension.admob.AdMobListener;
 #end
 
+class BannerPosition {
+	public static inline var BOTTOM:Int = 0;
+	public static inline var TOP:Int = 1;
+}
+
 // A wrapper so I can switch between ads services easily
 class AdsWrapper
 {
@@ -70,6 +75,12 @@ class AdsWrapper
 	public static function hideBanner(id:String):Void {
 		#if admobads
 		AdMob.hideBanner(id);
+		#end
+	}
+	
+	public static function setBannerPosition(position:Int):Void {
+		#if admobads
+		AdMob.setBannerPosition(position);
 		#end
 	}
 	
