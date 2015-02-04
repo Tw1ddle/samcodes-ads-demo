@@ -59,13 +59,31 @@ class AdFocusSubState extends FlxSubState
 				
 				switch(adType) {
 					case STATIC_INTERSTITIAL:
-						AdsWrapper.showInterstitial(location);
+						if(AdsWrapper.hasCachedInterstitial(location)) {
+							AdsWrapper.showInterstitial(location);
+						} else {
+							closeDueToNoCaching();
+						}
 					case VIDEO_INTERSTITIAL:
-						AdsWrapper.showRewardedVideo(location);
+						if (AdsWrapper.hasCachedMoreApps(location)) {
+							AdsWrapper.showRewardedVideo(location);
+						} else {
+							closeDueToNoCaching();
+						}
+						
 					case MORE_APPS_PAGE:
-						AdsWrapper.showMoreApps(location);
+						if (AdsWrapper.hasCachedRewardedVideo(location)) {
+							AdsWrapper.showMoreApps(location);
+						} else {
+							closeDueToNoCaching();
+						}
 				}
 			}
 		}, 0);
+	}
+	
+	private function closeDueToNoCaching():Void {
+		game.addText("Closing ad focus substate because the requested ad has not been cached.");
+		close();
 	}
 }
