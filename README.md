@@ -39,6 +39,21 @@ For iOS pass the id in the AdMob init call method:
 AdMob.init("YOUR_HASHED_TEST_DEVICE_ID");
 ```
 
+------
+
+The various app ids, interstitial and banner ids in this are unconfigured and will not work. You should set up your own test apps and ads to use with this demo:
+	
+```haxe
+// In AdLocations.hx
+#if chartboostads
+	// Chartboost locations are customizable - they can be whatever you want e.g.
+	public static inline var SAMPLE_INTERSTITIAL_LOCATION:String = "my_cb_interstitial";
+	#elseif admobads
+	// AdMob locations are taken from your AdMob dashboard e.g.
+	public static inline var DEMO_BANNER_LOCATION:String = "ca-app-pub-2600848144826429/9144221192";
+	#ends
+```
+
 Build the app. When an ad is visible the app should enter the "Ad Focused Substate", else it should be in the "Game Substate". Press the buttons at the bottom to use it.
 
 ![](screenshots/chartboost-interstitial.png?raw=true)
@@ -49,7 +64,3 @@ Build the app. When an ad is visible the app should enter the "Ad Focused Substa
 If the demo does not look like it should or crashes then it may be due to a HaxeFlixel rendering bug. If problems persist then try building against a dev branch of HaxeFlixel or open an issue.
 
 For running on iOS, you must remember to drag the static ads library e.g. ```libChartboost.a``` into the "link binaries with libraries" section under the "build phases" tab in Xcode.
-
-By default the demo uses the bundled Chartboost submodule. If you want to build against the Chartboost haxelib, install that and then include it in Project.xml.
-
-The various app ids, interstitial and banner ids in this are left unconfigured. You should set up your own test apps and ads to use with this demo.
