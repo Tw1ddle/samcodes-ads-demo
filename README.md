@@ -46,12 +46,12 @@ The various app ids, interstitial and banner ids in this are unconfigured and wi
 ```haxe
 // In AdLocations.hx
 #if chartboostads
-	// Chartboost locations are customizable - they can be whatever you want e.g.
-	public static inline var SAMPLE_INTERSTITIAL_LOCATION:String = "my_cb_interstitial";
-	#elseif admobads
-	// AdMob locations are taken from your AdMob dashboard e.g.
-	public static inline var DEMO_BANNER_LOCATION:String = "ca-app-pub-2600848144826429/9144221192";
-	#ends
+// Chartboost locations are customizable - they can be whatever you want e.g.
+public static inline var SAMPLE_INTERSTITIAL_LOCATION:String = "my_cb_interstitial";
+#elseif admobads
+// AdMob locations are taken from your AdMob dashboard e.g.
+public static inline var DEMO_BANNER_LOCATION:String = "ca-app-pub-2600848144826429/9144221192";
+#end
 ```
 
 Build the app. When an ad is visible the app should enter the "Ad Focused Substate", else it should be in the "Game Substate". Press the buttons at the bottom to use it.
