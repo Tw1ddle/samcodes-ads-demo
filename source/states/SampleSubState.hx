@@ -23,6 +23,7 @@ class SampleSubState extends FlxSubState
 	private var cacheRewardedVideoButton: TextButton;
 	private var showRewardedVideoButton: TextButton;
 	private var clearTextLogButton: TextButton;
+	private var refreshBannerButton:TextButton;
 	private var showBannerButton:TextButton;
 	private var hideBannerButton:TextButton;
 	
@@ -39,6 +40,7 @@ class SampleSubState extends FlxSubState
 		if(!created) {			
 			buttonsGroup = new FlxSpriteGroup();
 			
+			refreshBannerButton = new TextButton(0, 0, "Refresh Banner", onRefreshBannerClick);
 			showBannerButton = new TextButton(0, 0, "Show Banner", onShowBannerClick);
 			hideBannerButton = new TextButton(0, 0, "Hide Banner", onHideBannerClick);
 			cacheInterstitialButton = new TextButton(0, 0, "Cache Interstitial", onCacheInterstitialClick);
@@ -52,7 +54,7 @@ class SampleSubState extends FlxSubState
 			#if chartboostads
 			var buttons = [cacheInterstitialButton, showInterstitialButton, cacheMoreAppsButton, showMoreAppsButton, cacheRewardedVideoButton, showRewardedVideoButton, clearTextLogButton];
 			#elseif admobads
-			var buttons = [cacheInterstitialButton, showInterstitialButton, showBannerButton, hideBannerButton, clearTextLogButton];
+			var buttons = [cacheInterstitialButton, showInterstitialButton, refreshBannerButton, showBannerButton, hideBannerButton, clearTextLogButton];
 			#end
 			
 			var x = 0;
@@ -122,6 +124,10 @@ class SampleSubState extends FlxSubState
 	
 	private function onHideBannerClick():Void {
 		AdsWrapper.hideBanner(AdLocations.DEMO_BANNER_LOCATION);
+	}
+	
+	private function onRefreshBannerClick():Void {
+		AdsWrapper.refreshBanner(AdLocations.DEMO_BANNER_LOCATION);
 	}
 	
 	private function onClearTextLogClick():Void {

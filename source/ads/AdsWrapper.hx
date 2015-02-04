@@ -55,6 +55,12 @@ class AdsWrapper
 	}
 	#end
 	
+	public static function refreshBanner(id:String):Void {
+		#if admobads
+		AdMob.refreshBanner(id);
+		#end
+	}
+	
 	public static function showBanner(id:String):Void {
 		#if admobads
 		AdMob.showBanner(id);
