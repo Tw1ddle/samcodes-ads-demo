@@ -85,5 +85,6 @@ class AdFocusSubState extends FlxSubState
 	private function closeDueToNoCaching():Void {
 		game.addText("Closing ad focus substate because the requested ad has not been cached.");
 		close();
+		game.openSubState(game.sampleSubState);
 	}
 }
