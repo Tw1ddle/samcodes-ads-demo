@@ -5,10 +5,9 @@ import ads.AdsWrapper;
 import flixel.FlxG;
 import flixel.FlxSubState;
 import flixel.group.FlxSpriteGroup;
-import flixel.util.FlxSpriteUtil;
+import flixel.util.FlxAxes;
 import states.AdFocusSubState.FocusStealingAdType;
 import states.PlayState;
-import TextItem;
 
 class SampleSubState extends FlxSubState
 {
@@ -66,8 +65,8 @@ class SampleSubState extends FlxSubState
 				x += cast button.width + 30;
 				buttonsGroup.add(button);
 			}
-			
-			FlxSpriteUtil.screenCenter(buttonsGroup, true, false);
+
+			buttonsGroup.screenCenter(FlxAxes.X);
 			buttonsGroup.y = FlxG.height * 0.75;
 			add(buttonsGroup);
 			
@@ -78,7 +77,7 @@ class SampleSubState extends FlxSubState
 			#end
 			
 			var substateText:TextItem = new TextItem(0, 0, msg, 24);
-			FlxSpriteUtil.screenCenter(substateText);
+			substateText.screenCenter(FlxAxes.XY);
 			add(substateText);
 			
 			created = true;

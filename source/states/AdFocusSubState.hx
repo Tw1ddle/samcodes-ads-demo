@@ -4,6 +4,7 @@ import ads.AdsWrapper;
 import flixel.FlxSubState;
 import flixel.util.FlxSpriteUtil;
 import flixel.util.FlxTimer;
+import flixel.util.FlxAxes;
 
 enum FocusStealingAdType {
 	STATIC_INTERSTITIAL;
@@ -32,7 +33,7 @@ class AdFocusSubState extends FlxSubState
 		
 		if (!created) {			
 			substateText = new TextItem(0, 0, "Ad Focused Substate", 24);
-			FlxSpriteUtil.screenCenter(substateText, true, false);
+			substateText.screenCenter(FlxAxes.X);
 			substateText.y = 10;
 			add(substateText);
 			created = true;
