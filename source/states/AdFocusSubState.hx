@@ -66,14 +66,14 @@ class AdFocusSubState extends FlxSubState
 							closeDueToNoCaching();
 						}
 					case VIDEO_INTERSTITIAL:
-						if (AdsWrapper.hasCachedMoreApps(location)) {
+						if (AdsWrapper.hasCachedRewardedVideo(location)) {
 							AdsWrapper.showRewardedVideo(location);
 						} else {
 							closeDueToNoCaching();
 						}
 						
 					case MORE_APPS_PAGE:
-						if (AdsWrapper.hasCachedRewardedVideo(location)) {
+						if (AdsWrapper.hasCachedMoreApps(location)) {
 							AdsWrapper.showMoreApps(location);
 						} else {
 							closeDueToNoCaching();
