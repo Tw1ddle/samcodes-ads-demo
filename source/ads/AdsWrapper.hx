@@ -130,7 +130,7 @@ class AdsWrapper
 	
 	public static function hasCachedMoreApps(id:String):Bool {
 		#if chartboostads
-		Chartboost.hasCachedMoreApps(id);
+		return Chartboost.hasCachedMoreApps(id);
 		#end
 		
 		return false;
