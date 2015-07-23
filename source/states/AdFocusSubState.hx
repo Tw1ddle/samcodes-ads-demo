@@ -71,7 +71,6 @@ class AdFocusSubState extends FlxSubState
 						} else {
 							closeDueToNoCaching();
 						}
-						
 					case MORE_APPS_PAGE:
 						if (AdsWrapper.hasCachedMoreApps(location)) {
 							AdsWrapper.showMoreApps(location);

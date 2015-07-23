@@ -8,12 +8,8 @@ import extension.chartboost.ChartboostListener;
 #if admobads
 import extension.admob.AdMob;
 import extension.admob.AdMobListener;
+import extension.admob.AdMobGravity;
 #end
-
-class BannerPosition {
-	public static inline var BOTTOM:Int = 0;
-	public static inline var TOP:Int = 1;
-}
 
 // A wrapper so I can switch between ads services easily
 class AdsWrapper
@@ -78,11 +74,11 @@ class AdsWrapper
 		#end
 	}
 	
-	public static function setBannerPosition(position:Int):Void {
-		#if admobads
-		AdMob.setBannerPosition(position);
-		#end
+	#if admobads
+	public static function setBannerPosition(horizontal:AdMobHorizontalGravity, vertical:AdMobVerticalGravity):Void {
+		AdMob.setBannerPosition(horizontal, vertical);
 	}
+	#end
 	
 	public static function showInterstitial(id:String):Void {
 		#if chartboostads

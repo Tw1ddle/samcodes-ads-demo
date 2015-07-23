@@ -47,6 +47,8 @@ class SimpleChartboostListener extends ChartboostListener
 		resumeGame(); // Note that both didDismissInterstitial and didCloseInterstitial get called when closing an ad normally
 	}
 	
+	// TODO there may be some cases where you can get stuck if it's possible to close an ad e.g. a video by pressing the "hardware back" button on Android without receiving these events
+	// TODO need to find places where that kind of thing can happen and add workarounds
 	override public function didCloseInterstitial(location:String):Void {
 		log("didCloseInterstitial: [" + location + "]");
 		resumeGame();
@@ -99,6 +101,10 @@ class SimpleChartboostListener extends ChartboostListener
 	
 	override public function didFailToRecordClick(uri:String):Void {
 		log("didFailToRecordClick: [" + uri + "]");
+	}
+	
+	override public function didPrefetchVideos():Void {
+		log("didPrefetchVideos");
 	}
 	
 	override public function shouldDisplayRewardedVideo(location:String):Void {

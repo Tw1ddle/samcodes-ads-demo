@@ -2,7 +2,7 @@
 <project>
 	<!------------------------------APPLICATION SETTINGS---------------------------->
 	
-	<meta title="HaxeAdsDemo" package="uk.co.samcodes.haxeadsdemo" version="1.1.0" company="Sam Twidale" />
+	<meta title="HaxeAdsDemo" package="uk.co.samcodes.haxeadsdemo" version="1.1.1" company="Sam Twidale" />
 	<app file="HaxeAdsDemo" main="Main" />
 	
 	<!-- This demo supports testing use of one ad network at a time -->

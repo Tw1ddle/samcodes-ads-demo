@@ -9,6 +9,10 @@ import flixel.util.FlxAxes;
 import states.AdFocusSubState.FocusStealingAdType;
 import states.PlayState;
 
+#if admobads
+import extension.admob.AdMobGravity;
+#end
+
 class SampleSubState extends FlxSubState
 {
 	private var created: Bool = false;
@@ -25,6 +29,7 @@ class SampleSubState extends FlxSubState
 	private var refreshBannerButton:TextButton;
 	private var showBannerButton:TextButton;
 	private var hideBannerButton:TextButton;
+	private var changeBannerPositionButton:TextButton;
 	
 	public function new(game:PlayState) {
 		super();
@@ -42,6 +47,7 @@ class SampleSubState extends FlxSubState
 			refreshBannerButton = new TextButton(0, 0, "Refresh Banner", onRefreshBannerClick);
 			showBannerButton = new TextButton(0, 0, "Show Banner", onShowBannerClick);
 			hideBannerButton = new TextButton(0, 0, "Hide Banner", onHideBannerClick);
+			changeBannerPositionButton = new TextButton(0, 0, "Random Banner Position", onChangeBannerPositionClick);
 			cacheInterstitialButton = new TextButton(0, 0, "Cache Interstitial", onCacheInterstitialClick);
 			showInterstitialButton = new TextButton(0, 0, "Show Interstitial", onShowInterstitialClick);
 			cacheMoreAppsButton = new TextButton(0, 0, "Cache More Apps", onCacheMoreAppsClick);
@@ -53,7 +59,7 @@ class SampleSubState extends FlxSubState
 			#if chartboostads
 			var buttons = [cacheInterstitialButton, showInterstitialButton, cacheMoreAppsButton, showMoreAppsButton, cacheRewardedVideoButton, showRewardedVideoButton, clearTextLogButton];
 			#elseif admobads
-			var buttons = [cacheInterstitialButton, showInterstitialButton, refreshBannerButton, showBannerButton, hideBannerButton, clearTextLogButton];
+			var buttons = [cacheInterstitialButton, showInterstitialButton, refreshBannerButton, showBannerButton, hideBannerButton, changeBannerPositionButton, clearTextLogButton];
 			#end
 			
 			var x = 0;
@@ -115,6 +121,14 @@ class SampleSubState extends FlxSubState
 		game.adFocusSubState.location = AdLocations.SAMPLE_REWARDED_VIDEO_LOCATION;
 		game.adFocusSubState.init();
 		game.openSubState(game.adFocusSubState);
+	}
+	
+	private function onChangeBannerPositionClick():Void {
+		#if admobads
+		var horizontals = [ AdMobHorizontalGravity.LEFT, AdMobHorizontalGravity.CENTER, AdMobHorizontalGravity.RIGHT ];
+		var verticals = [ AdMobVerticalGravity.BOTTOM, AdMobVerticalGravity.CENTER, AdMobVerticalGravity.TOP ];
+		AdsWrapper.setBannerPosition(horizontals[Std.int(Math.random() * horizontals.length) - 1], verticals[Std.int(Math.random() * verticals.length) - 1]);
+		#end
 	}
 	
 	private function onShowBannerClick():Void {
