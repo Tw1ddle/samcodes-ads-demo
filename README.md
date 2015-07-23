@@ -6,15 +6,15 @@ Demo of AdMob and Chartboost ads library bindings for [OpenFL](http://www.openfl
 
 This demo requires HaxeFlixel, so install it first:
 ```bash
-haxelib install flixel // If it doesn't build, try the dev branch of HaxeFlixel: haxelib git flixel https://github.com/HaxeFlixel/flixel dev
+haxelib install flixel # If it doesn't build, try the dev branch of HaxeFlixel: haxelib git flixel https://github.com/HaxeFlixel/flixel dev
 ```
 
-Uncomment the ```<set>``` tags at the top of ```project.xml``` for the ad network you want to test, then follow these steps:
+Uncomment the ```<set>``` tags at the top of ```Project.xml``` for the ad network you want to test, then follow these steps:
 
 ### Chartboost ###
 Make sure "test mode" is enabled on your Chartboost app dashboard.
 
-Fill in your app identifier and signature. For Android add it to project.xml:
+Fill in your app identifier and signature. For Android add it to ```Project.xml```:
 ```xml
 <setenv name="ChartboostAppId" value="your_app_id" />
 <setenv name="ChartboostAppSignature" value="your_app_signature" />
@@ -28,7 +28,7 @@ Chartboost.init("your_app_id", "your_app_signature");
 ### AdMob ###
 If you want to use test ads fill in your hashed device id. Refer to the AdMob documentation on how to get this.
 
-For Android add it to project.xml:
+For Android add it to ```Project.xml```:
 ```xml
 <setenv name="AdmobTestDeviceId" value="YOUR_HASHED_TEST_DEVICE_ID" />
 ```
