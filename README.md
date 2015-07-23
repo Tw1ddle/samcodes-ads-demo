@@ -6,7 +6,7 @@ Demo of AdMob and Chartboost ads library bindings for [OpenFL](http://www.openfl
 
 This demo requires HaxeFlixel, so install it first:
 ```bash
-haxelib install flixel
+haxelib install flixel // If it doesn't build, try the dev branch of HaxeFlixel: haxelib git flixel https://github.com/HaxeFlixel/flixel dev
 ```
 
 Uncomment the ```<set>``` tags at the top of ```project.xml``` for the ad network you want to test, then follow these steps:
