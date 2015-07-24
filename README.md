@@ -63,6 +63,4 @@ Build the app. Press the buttons at the bottom of the "Game Substate" to test th
 ![](screenshots/admob-banner.png?raw=true)
 
 ### Notes ###
-If the demo does not look like it should or crashes then it may be due to a HaxeFlixel rendering bug. If problems persist contact me.
-
-After building on iOS, you must remember to drag the static ads library e.g. ```libChartboost.a``` into the "link binaries with libraries" section under the "build phases" tab in Xcode.
+After building on iOS, you may need to drag the static ads library e.g. ```libChartboost.a``` into the "link binaries with libraries" section under the "build phases" tab in Xcode.
