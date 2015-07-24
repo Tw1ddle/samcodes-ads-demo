@@ -1,9 +1,6 @@
 # Haxe Ads Demo
 
-Demo for my AdMob and Chartboost ads haxelibs for Android and iOS.
-
-AdMob haxelib: https://github.com/Tw1ddle/samcodes-admob
-Chartboost haxelib: https://github.com/Tw1ddle/samcodes-chartboost
+Demo of [AdMob](https://github.com/Tw1ddle/samcodes-admob) and [Chartboost](https://github.com/Tw1ddle/samcodes-chartboost) haxelibs for Android and iOS:
 	
 ### Usage ###
 
@@ -15,20 +12,6 @@ haxelib install samcodes-chartboost
 ```
 
 Uncomment the ```<set>``` tags at the top of ```Project.xml``` for the ad network you want to test, then follow the setup steps:
-
-### Chartboost ###
-Make sure "test mode" is enabled on your Chartboost app dashboard.
-
-Fill in your app identifier and signature. For Android add it to ```Project.xml```:
-```xml
-<setenv name="ChartboostAppId" value="your_app_id" />
-<setenv name="ChartboostAppSignature" value="your_app_signature" />
-```
-For iOS pass the app identifier and signature in the Chartboost init call:
-```haxe
-// In AdsWrapper.hx
-Chartboost.init("your_app_id", "your_app_signature");
-```
 
 ### AdMob ###
 If you want to use test ads fill in your hashed device id. Refer to the AdMob documentation on how to get this.
@@ -44,9 +27,23 @@ For iOS pass the id in the AdMob init call method:
 AdMob.init("YOUR_HASHED_TEST_DEVICE_ID");
 ```
 
+### Chartboost ###
+Make sure "test mode" is enabled on your Chartboost app dashboard.
+
+Fill in your app identifier and signature. For Android add it to ```Project.xml```:
+```xml
+<setenv name="ChartboostAppId" value="your_app_id" />
+<setenv name="ChartboostAppSignature" value="your_app_signature" />
+```
+For iOS pass the app identifier and signature in the Chartboost init call:
+```haxe
+// In AdsWrapper.hx
+Chartboost.init("your_app_id", "your_app_signature");
+```
+
 ------
 
-The various app ids, interstitial and banner ids in this demo are unconfigured and will not work. Set up your own test apps and ads to use with this demo:
+App ids, interstitial and banner ids in this demo are unconfigured and require setup. Set your own test apps and ads for use with this demo:
 
 ```haxe
 // In AdLocations.hx
@@ -59,13 +56,13 @@ public static inline var DEMO_BANNER_LOCATION:String = "ca-app-pub-2600848144826
 #end
 ```
 
-Build the app. When an ad is visible the app should enter the "Ad Focused Substate", else it should be in the "Game Substate". Press the buttons at the bottom to use it.
+Build the app. Press the buttons at the bottom of the "Game Substate" to test the app out. When an ad is visible the app should enter an "Ad Focused Substate".
 
 ![](screenshots/chartboost-interstitial.png?raw=true)
 
 ![](screenshots/admob-banner.png?raw=true)
 
 ### Notes ###
-If the demo does not look like it should or crashes then it may be due to a HaxeFlixel rendering bug. If problems persist then contact me.
+If the demo does not look like it should or crashes then it may be due to a HaxeFlixel rendering bug. If problems persist contact me.
 
-For running on iOS, you must remember to drag the static ads library e.g. ```libChartboost.a``` into the "link binaries with libraries" section under the "build phases" tab in Xcode.
+After building on iOS, you must remember to drag the static ads library e.g. ```libChartboost.a``` into the "link binaries with libraries" section under the "build phases" tab in Xcode.
