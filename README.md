@@ -1,15 +1,20 @@
 # Haxe Ads Demo
 
-Demo of AdMob and Chartboost ads library bindings for [OpenFL](http://www.openfl.org/) (Android and iOS).
+Demo for my AdMob and Chartboost ads haxelibs for Android and iOS.
 
+AdMob haxelib: https://github.com/Tw1ddle/samcodes-admob
+Chartboost haxelib: https://github.com/Tw1ddle/samcodes-chartboost
+	
 ### Usage ###
 
-This demo requires HaxeFlixel, so install it first:
+This demo requires HaxeFlixel and the ads haxelibs, so install these first:
 ```bash
 haxelib install flixel # If it doesn't build, try the dev branch of HaxeFlixel: haxelib git flixel https://github.com/HaxeFlixel/flixel dev
+haxelib install samcodes-admob
+haxelib install samcodes-chartboost
 ```
 
-Uncomment the ```<set>``` tags at the top of ```Project.xml``` for the ad network you want to test, then follow these steps:
+Uncomment the ```<set>``` tags at the top of ```Project.xml``` for the ad network you want to test, then follow the setup steps:
 
 ### Chartboost ###
 Make sure "test mode" is enabled on your Chartboost app dashboard.
@@ -41,12 +46,12 @@ AdMob.init("YOUR_HASHED_TEST_DEVICE_ID");
 
 ------
 
-The various app ids, interstitial and banner ids in this are unconfigured and will not work. You should set up your own test apps and ads to use with this demo:
-	
+The various app ids, interstitial and banner ids in this demo are unconfigured and will not work. Set up your own test apps and ads to use with this demo:
+
 ```haxe
 // In AdLocations.hx
 #if chartboostads
-// Chartboost locations are customizable - they can be whatever you want e.g.
+// Chartboost locations have custom names - they can be whatever you want e.g.
 public static inline var SAMPLE_INTERSTITIAL_LOCATION:String = "my_cb_interstitial";
 #elseif admobads
 // AdMob locations are taken from your AdMob dashboard e.g.
@@ -61,6 +66,6 @@ Build the app. When an ad is visible the app should enter the "Ad Focused Substa
 ![](screenshots/admob-banner.png?raw=true)
 
 ### Notes ###
-If the demo does not look like it should or crashes then it may be due to a HaxeFlixel rendering bug. If problems persist then try building against a dev branch of HaxeFlixel or open an issue.
+If the demo does not look like it should or crashes then it may be due to a HaxeFlixel rendering bug. If problems persist then contact me.
 
 For running on iOS, you must remember to drag the static ads library e.g. ```libChartboost.a``` into the "link binaries with libraries" section under the "build phases" tab in Xcode.
