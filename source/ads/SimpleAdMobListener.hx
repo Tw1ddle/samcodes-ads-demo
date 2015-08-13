@@ -10,6 +10,8 @@ class SimpleAdMobListener extends AdMobListener {
 	private var game:PlayState;
 	
 	public function new(game:PlayState) {
+		super();
+	
 		this.game = game;
 	}
 	
