@@ -1,19 +1,15 @@
 package;
 
 import flash.display.Sprite;
-import flash.display.StageAlign;
-import flash.display.StageScaleMode;
 import flash.events.Event;
 import flash.Lib;
 import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
-import flixel.system.scaleModes.RatioScaleMode;
 import openfl.system.Capabilities;
 import states.PlayState;
 
-class Main extends Sprite
-{
+class Main extends Sprite {
 	var gameWidth:Int = 800; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	var gameHeight:Int = 500; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	
@@ -43,13 +39,10 @@ class Main extends Sprite
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
-		Lib.current.stage.align = StageAlign.TOP_LEFT;
-		Lib.current.stage.scaleMode = StageScaleMode.NO_SCALE;
-		
 #if ios
-		// Attempt to workaround touch issue on iPhone 6 Plus and iPad Air, iPad Air 2 (tablet retina devices)
-		var stageWidth:Int = cast Math.max(Capabilities.screenResolutionX, Capabilities.screenResolutionY);
-		var stageHeight:Int = cast Math.min(Capabilities.screenResolutionX, Capabilities.screenResolutionY);
+		// Workaround touch issue on iPhone 6 Plus and iPad Air, iPad Air 2 (tablet retina devices)
+		var stageWidth:Int = Std.int(Math.max(Capabilities.screenResolutionX, Capabilities.screenResolutionY));
+		var stageHeight:Int = Std.int(Math.min(Capabilities.screenResolutionX, Capabilities.screenResolutionY));
 #else
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;
@@ -65,16 +58,7 @@ class Main extends Sprite
 		
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom,
 		                     framerate, framerate, skipSplash, startFullscreen));
-					 
-		FlxG.scaleMode = new RatioScaleMode();
+							 
 		FlxG.fixedTimestep = false;
-		
-		#if android
-		FlxG.android.preventDefaultKeys = [27];
-		#end
-		
-		#if windows
-		FlxG.mouse.useSystemCursor = true;
-		#end
 	}
 }

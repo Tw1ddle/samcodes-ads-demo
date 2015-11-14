@@ -1,10 +1,10 @@
 package states;
 
 import ads.AdsWrapper;
+import flixel.FlxG;
 import flixel.FlxSubState;
-import flixel.util.FlxSpriteUtil;
-import flixel.util.FlxTimer;
 import flixel.util.FlxAxes;
+import flixel.util.FlxTimer;
 
 enum FocusStealingAdType {
 	STATIC_INTERSTITIAL;
@@ -12,8 +12,7 @@ enum FocusStealingAdType {
 	MORE_APPS_PAGE;
 }
 
-class AdFocusSubState extends FlxSubState
-{
+class AdFocusSubState extends FlxSubState {
 	public var game:PlayState;
 	public var created:Bool = false;
 	
@@ -22,21 +21,44 @@ class AdFocusSubState extends FlxSubState
 	
 	public var substateText:TextItem;
 	
+	private var presentingTimer:FlxTimer = null;
+	
+	private static inline var tapsToExit:Int = 4;
+	private var currentTaps:Int;
+	
 	public function new(game:PlayState) {
 		super();
 		this.game = game;
+		presentingTimer = new FlxTimer();
 	}
 	
 	override public function create():Void {
 		super.create();
 		destroySubStates = false;
+		currentTaps = 0;
 		
-		if (!created) {			
+		if (!created) {
 			substateText = new TextItem(0, 0, "Ad Focused Substate", 24);
 			substateText.screenCenter(FlxAxes.X);
 			substateText.y = 10;
 			add(substateText);
+			
 			created = true;
+		}
+	}
+	
+	override public function update(dt:Float):Void {
+		// Lets a user manually exit the state by tapping the screen multiple times. For when there is an ad SDK error that might otherwise trap the user
+		if (FlxG.touches.justStarted() != null && FlxG.touches.justStarted().length != 0) {
+			currentTaps++;
+			game.addText("Ad focus substate got tap " + currentTaps);
+		}
+		if (currentTaps >= tapsToExit) {
+			game.addText("Closing ad focus substate because user is probably stuck.");
+			AdsWrapper.closeImpression();
+			presentingTimer.cancel();
+			close();
+			game.openSubState(game.sampleSubState);
 		}
 	}
 	
@@ -45,18 +67,18 @@ class AdFocusSubState extends FlxSubState
 			return;
 		}
 		
-		// This is a bit of a hack: if an ad is shown instantaneously and it a type that causes the engine to stop updating,
-		// the engine will only change to the ad focus substate after the interstitial has been dismissed. 
+		// This is a bit of a hack: if an ad is shown instantaneously and is a type that causes the game to stop updating,
+		// the game will only change to the ad focus substate after the interstitial has been dismissed. 
 		// If an ad listener is set to close the ad substate on interstitial dismissal, it would get stuck because of this.
-		// Therefore wait until the engine has definitely changed the game substate to the ad focus substate before requesting to display the interstitial.
+		// Therefore wait until the game has definitely changed the current substate to the ad focus substate before requesting to display the interstitial.
 		var timer = new FlxTimer();
-		timer.start(0.05, function(t:FlxTimer):Void {
+		presentingTimer.start(0.05, function(t:FlxTimer):Void {
 			game.addText("Waiting for ad focus substate (loops: " + t.elapsedLoops + ")");
 			
 			if (game.subState == game.adFocusSubState) { // Note this will break with nested substates
 				t.cancel();
 				
-				game.addText("Ad Focus Substate entered. Requesting ad...");
+				game.addText("Ad Focus Substate entered. Waiting for ad...");
 				
 				switch(adType) {
 					case STATIC_INTERSTITIAL:
@@ -83,7 +105,8 @@ class AdFocusSubState extends FlxSubState
 	}
 	
 	private function closeDueToNoCaching():Void {
-		game.addText("Closing ad focus substate because the requested ad has not been cached.");
+		game.addText("Closing ad focus substate because the requested ad had not been cached.");
+		presentingTimer.cancel();
 		close();
 		game.openSubState(game.sampleSubState);
 	}

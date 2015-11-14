@@ -4,7 +4,7 @@ import ads.AdLocations;
 import ads.AdsWrapper;
 import flixel.FlxG;
 import flixel.FlxSubState;
-import flixel.group.FlxSpriteGroup;
+import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import flixel.util.FlxAxes;
 import states.AdFocusSubState.FocusStealingAdType;
 import states.PlayState;
@@ -13,12 +13,11 @@ import states.PlayState;
 import extension.admob.AdMobGravity;
 #end
 
-class SampleSubState extends FlxSubState
-{
+class SampleSubState extends FlxSubState {
 	private var created: Bool = false;
 	private var game: PlayState;
 	
-	private var buttonsGroup: FlxSpriteGroup;
+	private var buttonsGroup: FlxTypedSpriteGroup<TextButton>;
 	private var cacheInterstitialButton: TextButton;
 	private var showInterstitialButton: TextButton;
 	private var cacheMoreAppsButton: TextButton;
@@ -42,7 +41,7 @@ class SampleSubState extends FlxSubState
 		destroySubStates = false;
 		
 		if(!created) {			
-			buttonsGroup = new FlxSpriteGroup();
+			buttonsGroup = new FlxTypedSpriteGroup<TextButton>();
 			
 			refreshBannerButton = new TextButton(0, 0, "Refresh Banner", onRefreshBannerClick);
 			showBannerButton = new TextButton(0, 0, "Show Banner", onShowBannerClick);
@@ -56,19 +55,21 @@ class SampleSubState extends FlxSubState
 			showRewardedVideoButton = new TextButton(0, 0, "Show Video", onShowRewardedVideoClick);
 			clearTextLogButton = new TextButton(0, 0, "Clear Text Log", onClearTextLogClick);
 			
+			var buttons:Array<TextButton> = [];
+			
 			#if chartboostads
-			var buttons = [cacheInterstitialButton, showInterstitialButton, cacheMoreAppsButton, showMoreAppsButton, cacheRewardedVideoButton, showRewardedVideoButton, clearTextLogButton];
+			buttons = [cacheInterstitialButton, showInterstitialButton, cacheMoreAppsButton, showMoreAppsButton, cacheRewardedVideoButton, showRewardedVideoButton, clearTextLogButton];
 			#elseif admobads
-			var buttons = [cacheInterstitialButton, showInterstitialButton, refreshBannerButton, showBannerButton, hideBannerButton, changeBannerPositionButton, clearTextLogButton];
+			buttons = [cacheInterstitialButton, showInterstitialButton, refreshBannerButton, showBannerButton, hideBannerButton, changeBannerPositionButton, clearTextLogButton];
 			#end
 			
-			var x = 0;
+			var x:Float = 0;
 			for (button in buttons) {
 				button.x = x;
 				button.scale.set(1, 4);
 				button.updateHitbox();
 				button.label.offset.y = -20;
-				x += cast button.width + 30;
+				x += button.width + 30;
 				buttonsGroup.add(button);
 			}
 
@@ -79,7 +80,7 @@ class SampleSubState extends FlxSubState
 			#if (ios || android)
 			var msg:String = "Game Substate";
 			#else
-			var msg:String = "Build against Android or iOS targets!";
+			var msg:String = "Build against Android or iOS targets! Set your ids in AdLocations.hx!";
 			#end
 			
 			var substateText:TextItem = new TextItem(0, 0, msg, 24);

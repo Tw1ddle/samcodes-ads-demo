@@ -12,8 +12,7 @@ import extension.admob.AdMobGravity;
 #end
 
 // A wrapper so I can switch between ads services easily
-class AdsWrapper
-{
+class AdsWrapper {
 	public static function init():Void {
 		#if chartboostads
 		
@@ -150,5 +149,15 @@ class AdsWrapper
 		#end
 		
 		return false;
+	}
+	
+	public static function closeImpression():Void {
+		#if chartboostads
+		Chartboost.closeImpression();
+		#end
+		
+		#if admobads
+		// TODO
+		#end
 	}
 }

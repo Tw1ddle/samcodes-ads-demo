@@ -2,14 +2,14 @@
 <project>
 	<!------------------------------APPLICATION SETTINGS---------------------------->
 	
-	<meta title="HaxeAdsDemo" package="uk.co.samcodes.haxeadsdemo" version="1.1.1" company="Sam Twidale" />
+	<meta title="HaxeAdsDemo" package="uk.co.samcodes.haxeadsdemo" version="1.1.2" company="Sam Twidale" />
 	<app file="HaxeAdsDemo" main="Main" />
 	
 	<!-- This demo supports testing use of one ad network at a time -->
 	<set name="chartboostads" if="android" />
 	<set name="chartboostads" if="ios" />
 	<!-- <set name="admobads" if="android" /> -->
-	<!-- <set name="admobads" if="ios" /> -->
+	<!-- <set name="admobads" if="ios" /> --> 
 	
 	<!--------------------------------WINDOW SETTINGS------------------------------->
 	
@@ -52,7 +52,7 @@
 		<setenv name="CHARTBOOSTADS" />
 		<haxedef name="chartboostads" />
 		
-		<!-- Make sure to change this line to whatever version of the Chartboost module you want to build against! -->
+		<!-- Change this line to the version of the Chartboost haxelib you want to build against! -->
 		<!-- <include path="lib/samcodes-chartboost/include.xml" /> -->
 		<haxelib name="samcodes-chartboost" />
 		
@@ -65,7 +65,7 @@
 		<setenv name="ADMOBADS" />
 		<haxedef name="admobads" />
 		
-		<!-- Make sure to change this line to whatever version of the AdMob module you want to build against! -->
+		<!-- Change this line to the version of the AdMob module you want to build against! -->
 		<!-- <include path="lib/samcodes-admob/include.xml" /> -->
 		<haxelib name="samcodes-admob" />
 		
@@ -114,6 +114,7 @@
 	<set name="SWF_VERSION" value="11.2" />
 	
 	<section if="android">
-		<template path="android/AndroidManifest.xml" rename="AndroidManifest.xml" />
+		<!-- Targets Android Marshmallow -->
+		<android target-sdk-version="23" />
 	</section>
 </project>

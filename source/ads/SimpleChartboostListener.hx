@@ -3,11 +3,11 @@ package ads;
 #if chartboostads
 
 import extension.chartboost.ChartboostListener;
+import extension.chartboost.ChartboostError;
 import flixel.FlxState;
 import states.PlayState;
 
-class SimpleChartboostListener extends ChartboostListener
-{
+class SimpleChartboostListener extends ChartboostListener {
 	private var game:PlayState;
 	
 	public function new(game:PlayState) {
@@ -37,8 +37,8 @@ class SimpleChartboostListener extends ChartboostListener
 		log("didCacheInterstitial: [" + location + "]");
 	}
 	
-	override public function didFailToLoadInterstitial(location:String):Void {
-		log("didFailToLoadInterstitial: [" + location + "]");
+	override public function didFailToLoadInterstitial(location:String, error:Int):Void {
+		log("didFailToLoadInterstitial: [" + location + "] [" + ChartboostError.descriptionForLoadingError(error) + "]");
 		resumeGame();
 	}
 	
@@ -71,8 +71,8 @@ class SimpleChartboostListener extends ChartboostListener
 		log("shouldDisplayMoreApps: [" + location + "]");
 	}
 	
-	override public function didFailToLoadMoreApps(location:String):Void {
-		log("didFailToLoadMoreApps: [" + location + "]");
+	override public function didFailToLoadMoreApps(location:String, error:Int):Void {
+		log("didFailToLoadMoreApps: [" + location + "] [" + ChartboostError.descriptionForLoadingError(error) + "]");
 		resumeGame();
 	}
 	
@@ -99,8 +99,8 @@ class SimpleChartboostListener extends ChartboostListener
 		log("didDisplayMoreApps: [" + location + "]");
 	}
 	
-	override public function didFailToRecordClick(uri:String):Void {
-		log("didFailToRecordClick: [" + uri + "]");
+	override public function didFailToRecordClick(uri:String, error:Int):Void {
+		log("didFailToRecordClick: [" + uri + "] [" + ChartboostError.descriptionForClickError(error) + "]");
 	}
 	
 	override public function didPrefetchVideos():Void {
@@ -115,8 +115,8 @@ class SimpleChartboostListener extends ChartboostListener
 		log("didCacheRewardedVideo: [" + location + "]");
 	}
 	
-	override public function didFailToLoadRewardedVideo(location:String):Void {
-		log("didFailToLoadRewardedVideo: [" + location + "]");
+	override public function didFailToLoadRewardedVideo(location:String, error:Int):Void {
+		log("didFailToLoadRewardedVideo: [" + location + "] [" + ChartboostError.descriptionForLoadingError(error) + "]");
 		resumeGame();
 	}
 	

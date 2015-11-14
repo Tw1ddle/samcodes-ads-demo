@@ -6,15 +6,15 @@ Demo of [AdMob](https://github.com/Tw1ddle/samcodes-admob) and [Chartboost](http
 
 This demo requires HaxeFlixel and the ads haxelibs, so install these first:
 ```bash
-haxelib install flixel # Else try dev branch of HaxeFlixel: haxelib git flixel https://github.com/HaxeFlixel/flixel dev
+haxelib git flixel https://github.com/HaxeFlixel/flixel dev # Else try stable branch of HaxeFlixel: haxelib install flixel
 haxelib install samcodes-admob
 haxelib install samcodes-chartboost
 ```
 
-Uncomment the ```<set>``` tags at the top of ```Project.xml``` for the ad network you want to test, then follow the setup steps:
+Configure the ```<set>``` tags at the top of ```Project.xml``` for the ad network you want to use, then follow these steps:
 
 ### AdMob ###
-If you want to get test ads then enter your hashed device id. Refer to the AdMob documentation on this.
+To get test mode ads, enter your hashed device id. Refer to the AdMob documentation for instructions.
 
 For Android add it to ```Project.xml```:
 ```xml
@@ -35,7 +35,7 @@ Fill in your app identifier and signature. For Android add it to ```Project.xml`
 <setenv name="ChartboostAppId" value="your_app_id" />
 <setenv name="ChartboostAppSignature" value="your_app_signature" />
 ```
-For iOS pass the app identifier and signature in the Chartboost init call:
+For iOS pass the app identifier and signature via the Chartboost init call:
 ```haxe
 // In AdsWrapper.hx
 Chartboost.init("your_app_id", "your_app_signature");
@@ -43,7 +43,7 @@ Chartboost.init("your_app_id", "your_app_signature");
 
 ------
 
-App ids, interstitial and banner ids in this demo are unconfigured and need to be set yourself:
+App ids, interstitial and banner ids are unconfigured in this demo, you need to set your own:
 
 ```haxe
 // In AdLocations.hx
@@ -56,11 +56,11 @@ public static inline var DEMO_BANNER_LOCATION:String = "ca-app-pub-2600848144826
 #end
 ```
 
-Build the app. Press the buttons at the bottom of the "Game Substate" to test the app out. When an ad is visible the app should enter an "Ad Focused Substate".
+Build the app. Press the buttons at the bottom of the "Game Substate" to test the different types of ads. When an ad is visible the app should enter an "Ad Focused Substate".
 
 ![](screenshots/chartboost-video.png?raw=true)
 
 ![](screenshots/admob-banner.png?raw=true)
 
 ### Notes ###
-After building on iOS, you may need to drag the static ads library e.g. ```libChartboost.a``` into the "link binaries with libraries" section under the "build phases" tab in Xcode.
+For building on iOS, you may need to drag the static ads library e.g. ```libChartboost.a``` into the "link binaries with libraries" section under the "build phases" tab in Xcode.
