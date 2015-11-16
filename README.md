@@ -63,4 +63,4 @@ Build the app. Press the buttons at the bottom of the "Game Substate" to test th
 ![](screenshots/admob-banner.png?raw=true)
 
 ### Notes ###
-For building on iOS, you may need to drag the static ads library e.g. ```libChartboost.a``` into the "link binaries with libraries" section under the "build phases" tab in Xcode.
+For building on iOS, you need to drag the ads library file e.g. ```libChartboost.a``` into the "link binaries with libraries" section under the "build phases" tab in Xcode. Also double check that all required frameworks are included.
