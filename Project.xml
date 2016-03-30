@@ -2,14 +2,14 @@
 <project>
 	<!------------------------------APPLICATION SETTINGS---------------------------->
 	
-	<meta title="HaxeAdsDemo" package="uk.co.samcodes.haxeadsdemo" version="1.1.2" company="Sam Twidale" />
+	<meta title="HaxeAdsDemo" package="uk.co.samcodes.haxeadsdemo" version="1.1.3" company="Sam Twidale" />
 	<app file="HaxeAdsDemo" main="Main" />
 	
 	<!-- This demo supports testing use of one ad network at a time -->
-	<set name="chartboostads" if="android" />
-	<set name="chartboostads" if="ios" />
-	<!-- <set name="admobads" if="android" /> -->
-	<!-- <set name="admobads" if="ios" /> --> 
+	<!-- <set name="chartboostads" if="android" /> -->
+	<!-- <set name="chartboostads" if="ios" /> -->
+	<set name="admobads" if="android" />
+	<set name="admobads" if="ios" />
 	
 	<!--------------------------------WINDOW SETTINGS------------------------------->
 	
@@ -53,8 +53,8 @@
 		<haxedef name="chartboostads" />
 		
 		<!-- Change this line to the version of the Chartboost haxelib you want to build against! -->
-		<!-- <include path="lib/samcodes-chartboost/include.xml" /> -->
-		<haxelib name="samcodes-chartboost" />
+		<include path="lib/samcodes-chartboost/include.xml" />
+		<!-- <haxelib name="samcodes-chartboost" /> -->
 		
 		<!-- Enter your app id and app signature here for Android! Enter your ids in Chartboost.init call on iOS -->
 		<setenv name="ChartboostAppId" value="YOUR_ID" />
@@ -66,8 +66,8 @@
 		<haxedef name="admobads" />
 		
 		<!-- Change this line to the version of the AdMob module you want to build against! -->
-		<!-- <include path="lib/samcodes-admob/include.xml" /> -->
-		<haxelib name="samcodes-admob" />
+		<include path="lib/samcodes-admob/include.xml" />
+		<!-- <haxelib name="samcodes-admob" /> -->
 		
 		<!-- Set this if you want to use test ads on a particular device -->
 		<!-- Your test id will appear in logcat. Refer to AdMob documentation --> 

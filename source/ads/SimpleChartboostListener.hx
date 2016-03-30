@@ -103,10 +103,6 @@ class SimpleChartboostListener extends ChartboostListener {
 		log("didFailToRecordClick: [" + uri + "] [" + ChartboostError.descriptionForClickError(error) + "]");
 	}
 	
-	override public function didPrefetchVideos():Void {
-		log("didPrefetchVideos");
-	}
-	
 	override public function shouldDisplayRewardedVideo(location:String):Void {
 		log("shouldDisplayRewardedVideo: [" + location + "]");
 	}
@@ -145,6 +141,10 @@ class SimpleChartboostListener extends ChartboostListener {
 	
 	override public function willDisplayVideo(location:String):Void {
 		log("willDisplayVideo: [" + location + "]");
+	}
+	
+	override public function didInitialize(status:Bool):Void {
+		log("didInitialize: [" + status + "]");
 	}
 }
 
