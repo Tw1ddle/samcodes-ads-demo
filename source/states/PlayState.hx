@@ -27,9 +27,11 @@ class PlayState extends FlxState {
 		adEventText = new TextItem(0, 0, "Initializing...", 12);
 		add(adEventText);
 		
+		addText("Will setup bindings...");
 		AdsWrapper.init();
 		addText("Setup bindings...");
 		
+		// Note that since the listener is set up after the Ads Wrapper init call, an initialization callback might be missed by Haxe
 		#if chartboostads
 		AdsWrapper.setListener(new SimpleChartboostListener(this));
 		addText("Set Chartboost listener");
@@ -37,7 +39,9 @@ class PlayState extends FlxState {
 		#if admobads
 		AdsWrapper.setListener(new SimpleAdMobListener(this));
 		addText("Set AdMob listener");
+		#end
 		
+		#if admobads
 		AdsWrapper.setBannerPosition(AdMobHorizontalGravity.CENTER, AdMobVerticalGravity.BOTTOM);
 		#end
 		

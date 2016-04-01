@@ -15,7 +15,6 @@ import extension.admob.AdMobGravity;
 class AdsWrapper {
 	public static function init():Void {
 		#if chartboostads
-		
 		#if android
 		Chartboost.init(); // For Android you set the appID and appSignature in your Project.xml
 		#end
@@ -23,14 +22,27 @@ class AdsWrapper {
 		// Enter your app id and app signature here for iOS! Enter your ids in your Project.xml for Android
 		var appId: String = "YOUR_ID";
 		var appSignature:String = "YOUR_SIG";
-		
 		if (appId == "YOUR_ID" || appSignature == "YOUR_SIG") {
 			throw "You have not added your Chartboost iOS app id or app signature. Add them in AdsWrapper.hx!";
 		}
-		
 		Chartboost.init(appId, appSignature);
 		#end
-		
+		// Configure the Chartboost SDK
+		var shouldRequestInterstitials = true;
+		var willPrefetchVideos = true;
+		var willHideSystemUI = true;
+		var willDisplayLoadingView = false;
+		var customPostId = "HAXEFLIXEL_DEMO_APP";
+		trace("Will show interstitials in first session: " + shouldRequestInterstitials);
+		trace("Will prefetch video content: " + willPrefetchVideos);
+		trace("Will hide system UI for ads: " + willHideSystemUI);
+		trace("Will display loading view for more apps: " + willDisplayLoadingView);
+		trace("Will use custom POST id: " + customPostId);
+		Chartboost.setShouldRequestInterstitialsInFirstSession(shouldRequestInterstitials);
+		Chartboost.setShouldPrefetchVideoContent(willPrefetchVideos);
+		Chartboost.setShouldHideSystemUI(willHideSystemUI);
+		Chartboost.setShouldDisplayLoadingViewForMoreApps(willDisplayLoadingView);
+		Chartboost.setCustomId(customPostId);
 		#end
 		
 		#if admobads
@@ -99,13 +111,13 @@ class AdsWrapper {
 		#end
 	}
 
-	public static function hasCachedInterstitial(id:String):Bool {
+	public static function hasInterstitial(id:String):Bool {
 		#if chartboostads
-		return Chartboost.hasCachedInterstitial(id);
+		return Chartboost.hasInterstitial(id);
 		#end
 		
 		#if admobads
-		return AdMob.hasCachedInterstitial(id);
+		return AdMob.hasInterstitial(id);
 		#end
 		
 		return false;
@@ -123,9 +135,9 @@ class AdsWrapper {
 		#end
 	}
 	
-	public static function hasCachedMoreApps(id:String):Bool {
+	public static function hasMoreApps(id:String):Bool {
 		#if chartboostads
-		return Chartboost.hasCachedMoreApps(id);
+		return Chartboost.hasMoreApps(id);
 		#end
 		
 		return false;
@@ -143,9 +155,9 @@ class AdsWrapper {
 		#end
 	}
 	
-	public static function hasCachedRewardedVideo(id:String):Bool {
+	public static function hasRewardedVideo(id:String):Bool {
 		#if chartboostads
-		return Chartboost.hasCachedRewardedVideo(id);
+		return Chartboost.hasRewardedVideo(id);
 		#end
 		
 		return false;
