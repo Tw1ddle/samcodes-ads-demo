@@ -30,16 +30,6 @@
 	<set name="BUILD_DIR" value="export" />
 	<classpath name="source" />
 	
-	<assets path="assets/data" include="*" type="data" />
-	<assets path="assets/images" include="*" type="image" />
-	<assets path="assets/music" type="music" unless="cpp">
-	</assets>
-	<assets path="assets/music" type="music" if="cpp">
-	</assets>
-	<assets path="assets/sounds" type="sound" unless="cpp">
-	</assets>
-	<assets path="assets/sounds" type="sound" if="cpp">
-	</assets>
 	<assets path="assets/fonts">
 		<font path="pf_westa_seven.ttf" id="westa_seven" />
 	</assets>
