@@ -38,7 +38,7 @@ class SimpleChartboostListener extends ChartboostListener {
 	}
 	
 	override public function didFailToLoadInterstitial(location:String, error:Int):Void {
-		log("didFailToLoadInterstitial: [" + location + "] [" + ChartboostError.descriptionForLoadingError(error) + "]");
+		log("didFailToLoadInterstitial: [" + location + "] [" + ChartboostError.descriptionForImpressionError(error) + "]");
 		resumeGame();
 	}
 	
@@ -72,7 +72,7 @@ class SimpleChartboostListener extends ChartboostListener {
 	}
 	
 	override public function didFailToLoadMoreApps(location:String, error:Int):Void {
-		log("didFailToLoadMoreApps: [" + location + "] [" + ChartboostError.descriptionForLoadingError(error) + "]");
+		log("didFailToLoadMoreApps: [" + location + "] [" + ChartboostError.descriptionForImpressionError(error) + "]");
 		resumeGame();
 	}
 	
@@ -112,7 +112,7 @@ class SimpleChartboostListener extends ChartboostListener {
 	}
 	
 	override public function didFailToLoadRewardedVideo(location:String, error:Int):Void {
-		log("didFailToLoadRewardedVideo: [" + location + "] [" + ChartboostError.descriptionForLoadingError(error) + "]");
+		log("didFailToLoadRewardedVideo: [" + location + "] [" + ChartboostError.descriptionForImpressionError(error) + "]");
 		resumeGame();
 	}
 	
