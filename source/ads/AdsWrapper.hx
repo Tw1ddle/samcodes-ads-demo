@@ -164,7 +164,7 @@ class AdsWrapper {
 	}
 	
 	public static function closeImpression():Void {
-		#if chartboostads
+		#if (chartboostads && android) // Unfortunately this is Android-only as of iOS SDK 6.5.0
 		Chartboost.closeImpression();
 		#end
 		
