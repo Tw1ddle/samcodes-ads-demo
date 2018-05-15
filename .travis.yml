@@ -27,8 +27,8 @@ install:
 script:
   - haxelib run openfl build "Project.xml" flash
   - haxelib run openfl build "Project.xml" html5 -minify -release
-  #- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then run openfl build "Project.xml" android ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then run openfl build "Project.xml" ios ; fi
+  #- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then haxelib run openfl build "Project.xml" android ; fi # Would have to install Android SDK, NDK etc
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then haxelib run openfl build "Project.xml" ios ; fi
 
 # Deploy the generated demo using Travis builtin GitHub Pages support
 deploy:
