@@ -68,7 +68,7 @@ class AdFocusSubState extends FlxSubState {
 		}
 		
 		// This is a bit of a hack: if an ad is shown instantaneously and is a type that causes the game to stop updating,
-		// the game will only change to the ad focus substate after the interstitial has been dismissed. 
+		// the game will only change to the ad focus substate after the interstitial has been dismissed.
 		// If an ad listener is set to close the ad substate on interstitial dismissal, it would get stuck because of this.
 		// Therefore wait until the game has definitely changed the current substate to the ad focus substate before requesting to display the interstitial.
 		var timer = new FlxTimer();
