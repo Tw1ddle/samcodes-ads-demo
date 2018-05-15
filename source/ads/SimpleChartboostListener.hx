@@ -47,8 +47,9 @@ class SimpleChartboostListener extends ChartboostListener {
 		resumeGame(); // Note that both didDismissInterstitial and didCloseInterstitial get called when closing an ad normally
 	}
 	
-	// TODO there may be some cases where you can get stuck if it's possible to close an ad e.g. a video by pressing the "hardware back" button on Android without receiving these events
-	// TODO need to find places where that kind of thing can happen and add workarounds
+	// NOTE there may be some cases where you can get stuck if it's possible to close an ad e.g. a video by pressing the "hardware back" button on Android without receiving these events
+	// You'll need to find places where that kind of thing can happen and add workarounds in your game
+	// In this demo, the AdFocusSubState is exited and the game resumes if the user taps enough times - which might be an OK workaround where this issue is a rare edge case...
 	override public function didCloseInterstitial(location:String):Void {
 		log("didCloseInterstitial: [" + location + "]");
 		resumeGame();
