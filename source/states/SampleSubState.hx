@@ -40,7 +40,7 @@ class SampleSubState extends FlxSubState {
 		
 		destroySubStates = false;
 		
-		if(!created) {			
+		if(!created) {
 			buttonsGroup = new FlxTypedSpriteGroup<TextButton>();
 			
 			refreshBannerButton = new TextButton(0, 0, "Refresh Banner", onRefreshBannerClick);
@@ -80,10 +80,10 @@ class SampleSubState extends FlxSubState {
 			#if (ios || android)
 			var msg:String = "Game Substate";
 			#else
-			var msg:String = "Build against Android or iOS targets! Set your ids in AdLocations.hx!";
+			var msg:String = "Build against Android or iOS targets! Set ad ids in AdLocations.hx!";
 			#end
 			
-			var substateText:TextItem = new TextItem(0, 0, msg, 24);
+			var substateText:TextItem = new TextItem(0, 0, msg, 16);
 			substateText.screenCenter(FlxAxes.XY);
 			add(substateText);
 			

@@ -16,25 +16,22 @@
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
     <class path="C:\HaxeToolkit\haxe\lib\flixel\git" />
-    <class path="C:\HaxeToolkit\haxe\lib\lime\2,9,1" />
-    <class path="C:\HaxeToolkit\haxe\lib\openfl\3,6,1" />
-    <class path="C:\HaxeToolkit\haxe\lib\lime\3,0,0" />
-    <class path="C:\HaxeToolkit\haxe\lib\hscript\2,0,7" />
-    <class path="C:\HaxeToolkit\haxe\lib\extension-android-support-v4\1,0,0" />
-    <class path="C:\HaxeToolkit\haxe\lib\extension-googleplayservices-lib\1,1,0" />
+    <class path="C:\HaxeToolkit\haxe\lib\openfl\8,0,1\src" />
+    <class path="C:\HaxeToolkit\haxe\lib\lime\6,3,1" />
+    <class path="C:\HaxeToolkit\haxe\lib\hscript\2,2,0" />
     <class path="source" />
-    <class path="C:\HaxeToolkit\haxe\lib\openfl\3,6,1\extern" />
-    <class path="lib\samcodes-admob" />
-    <class path="export\android\debug\haxe" />
+    <class path="C:\HaxeToolkit\haxe\lib\openfl\8,0,1\src\externs\core\openfl" />
+    <class path="C:\HaxeToolkit\haxe\lib\openfl\8,0,1\src\externs\extras" />
+    <class path="export\html5\haxe" />
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="flixel=4.1.0&#xA;lime=2.9.1&#xA;openfl=3.6.1&#xA;lime=3.0.0&#xA;hscript=2.0.7&#xA;extension-android-support-v4=1.0.0&#xA;extension-googleplayservices-lib=1.1.0&#xA;HXCPP_QUIET&#xA;FLX_NO_KEYBOARD&#xA;openfl-next&#xA;FLX_NO_MOUSE&#xA;FLX_NO_GAMEPAD&#xA;FLX_NO_FOCUS_LOST_SCREEN&#xA;tools=3.0.0&#xA;no-compilation&#xA;admobads&#xA;native&#xA;lime-native&#xA;openfl-native&#xA;android&#xA;mobile&#xA;android&#xA;android-9&#xA;display" />
+    <option directives="flixel=4.4.1&#xA;openfl=8.0.1&#xA;lime=6.3.1&#xA;hscript=2.2.0&#xA;FLX_NO_GAMEPAD&#xA;FLX_NO_FOCUS_LOST_SCREEN&#xA;tools=6.3.1&#xA;FLX_NO_DEBUG&#xA;howlerjs&#xA;no-compilation&#xA;openfl-html5&#xA;lime-html5&#xA;html5&#xA;web&#xA;html5&#xA;display" />
     <option flashStrict="False" />
     <option noInlineOnDebug="True" />
     <option mainClass="ApplicationMain" />
     <option enabledebug="True" />
-    <option additional="extension-android-support-v4: [** JUST IN CASE NOTICE **] Please remember to download and upgrade 'Android Support V4' on a regular basis. Read more at https://github.com/sempaigames/extension-android-support-v4 extension-googleplayservices-lib: [** JUST IN CASE NOTICE **] Please remember to download and upgrade 'Google Play Services Library' on a regular basis. Read more at https://github.com/sempaigames/extension-googleplayservices-lib &#xA;#--macro keep('IntIterator')&#xA;--remap flash:openfl&#xA;--macro flixel.system.macros.FlxDefines.run()&#xA;#--macro keep(&quot;Main&quot;)&#xA;-debug " />
+    <option additional="--macro openfl._internal.utils.ExtraParams.include()&#xA;--macro lime.Lib.extraParams()&#xA;--remap flash:openfl&#xA;--macro flixel.system.macros.FlxDefines.run()" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>
