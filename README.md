@@ -1,7 +1,7 @@
 # Haxe Ads Demo
 
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](https://github.com/Tw1ddle/samcodes-ads-demo/blob/master/LICENSE)
-[![Build Status](https://img.shields.io/travis/Tw1ddle/Rectangle-Bin-Packing-Demo.svg?style=flat-square)](https://travis-ci.org/Tw1ddle/samcodes-ads-demo)
+[![Build Status](https://img.shields.io/travis/Tw1ddle/samcodes-ads-demo.svg?style=flat-square)](https://travis-ci.org/Tw1ddle/samcodes-ads-demo)
 
 Demo of unofficial [AdMob](https://github.com/Tw1ddle/samcodes-admob) and [Chartboost](https://github.com/Tw1ddle/samcodes-chartboost) haxelibs for Android and iOS.
 
