@@ -98,4 +98,6 @@
 	
 	<!--The swf version should be at least 11.2 without FLX_NO_MOUSE_ADVANCED -->
 	<set name="SWF_VERSION" value="11.2" />
+	
+	<icon path="icon.svg" />
 </project>
