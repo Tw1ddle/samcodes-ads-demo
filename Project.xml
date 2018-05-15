@@ -2,14 +2,14 @@
 <project>
 	<!------------------------------APPLICATION SETTINGS---------------------------->
 	
-	<meta title="HaxeAdsDemo" package="uk.co.samcodes.haxeadsdemo" version="1.1.3" company="Sam Twidale" />
+	<meta title="HaxeAdsDemo" package="uk.co.samcodes.haxeadsdemo" version="1.1.4" company="Sam Twidale" />
 	<app file="HaxeAdsDemo" main="Main" />
 	
-	<!-- This demo supports testing use of one ad network at a time -->
+	<!-- This demo supports testing use of one ad network at a time. Specify the one to use here! -->
 	<!-- <set name="chartboostads" if="android" /> -->
 	<!-- <set name="chartboostads" if="ios" /> -->
-	<set name="admobads" if="android" />
-	<set name="admobads" if="ios" />
+	<!-- <set name="admobads" if="android" /> -->
+	<!-- <set name="admobads" if="ios" /> -->
 	
 	<!--------------------------------WINDOW SETTINGS------------------------------->
 	

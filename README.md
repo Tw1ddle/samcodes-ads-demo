@@ -10,8 +10,8 @@ Demo app of [AdMob](https://github.com/Tw1ddle/samcodes-admob) and [Chartboost](
 This demo uses HaxeFlixel and my ads haxelibs, so install these first:
 ```bash
 haxelib install flixel
-haxelib install samcodes-admob
-haxelib install samcodes-chartboost
+haxelib install samcodes-admob # Also see samcodes-admob submodule in this repo
+haxelib install samcodes-chartboost # Also see samcodes-chartboost submodule in this repo
 ```
 
 Configure the ```<set>``` tags at the top of ```Project.xml``` for the ads platform you want to use, then follow these steps for the one you selected:
