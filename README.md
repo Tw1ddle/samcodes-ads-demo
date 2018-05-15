@@ -5,7 +5,7 @@
 
 Demo app of [AdMob](https://github.com/Tw1ddle/samcodes-admob) and [Chartboost](https://github.com/Tw1ddle/samcodes-chartboost) ads haxelibs for Android and iOS OpenFL targets.
 
-### Usage ###
+## Usage
 
 This demo uses HaxeFlixel and my ads haxelibs, so install these first:
 ```bash
@@ -16,7 +16,7 @@ haxelib install samcodes-chartboost
 
 Configure the ```<set>``` tags at the top of ```Project.xml``` for the ads platform you want to use, then follow these steps for the one you selected:
 
-### AdMob ###
+## AdMob
 To use test mode ads, enter your hashed device id. Refer to the AdMob documentation for instructions.
 
 For Android set it in ```Project.xml```:
@@ -30,7 +30,7 @@ For iOS pass the id in the AdMob init method:
 AdMob.init("YOUR_HASHED_TEST_DEVICE_ID_GOES_HERE");
 ```
 
-### Chartboost ###
+## Chartboost
 To use test ads, first ensure "test mode" is enabled on your Chartboost app dashboard.
 
 Fill in your app identifier and signature. For Android add it to ```Project.xml```:
@@ -46,7 +46,9 @@ Chartboost.init("your_app_id", "your_app_signature");
 
 ------
 
-App ids, interstitial and banner ids come unconfigured in this demo, you need to set your own:
+## Set Ad Ids
+
+App, interstitial and banner ids come unconfigured in this demo. You need to set your own:
 
 ```haxe
 // In AdLocations.hx
@@ -61,10 +63,16 @@ public static inline var DEMO_BANNER_LOCATION:String = "ca-app-pub-2600848144826
 
 Once you have done the above, build the app. Press the buttons at the bottom of the "Game Substate" to test the different types of ads. When an ad is visible the app should enter an "Ad Focused Substate".
 
+## Screenshots
+
+Chartboost video ad:
+
 ![](screenshots/chartboost-video.png?raw=true)
+
+AdMob banner ad:
 
 ![](screenshots/admob-banner.png?raw=true)
 
-### Notes ###
+## Notes
  * For building on iOS, you need to drag the ads library file e.g. ```libChartboost.a``` into the "link binaries with libraries" section under the "build phases" tab in Xcode. Also double check that all required frameworks are included.
  * Run the JavaScript build [here](https://tw1ddle.github.io/samcodes-ads-demo/index.html). There's no web ad support yet.
