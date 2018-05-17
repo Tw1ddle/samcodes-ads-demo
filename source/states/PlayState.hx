@@ -5,12 +5,16 @@ import ads.SimpleAdMobListener;
 import ads.SimpleChartboostListener;
 import flixel.FlxState;
 import flixel.util.FlxColor;
-import openfl.events.Event;
 import openfl.Lib;
+import openfl.events.Event;
 import states.SampleSubState;
 
 #if admobads
 import extension.admob.AdMobGravity;
+#end
+
+#if chartboostads
+import extension.chartboost.Chartboost;
 #end
 
 class PlayState extends FlxState {
@@ -31,7 +35,11 @@ class PlayState extends FlxState {
 		AdsWrapper.init();
 		addText("Setup bindings...");
 		
-		// Note that since the listener is set up after the Ads Wrapper init call, an initialization callback might be missed by Haxe
+		#if chartboostads
+		addText("Using Chartboost SDK version: " + Chartboost.getSDKVersion());
+		#end
+		
+		// Note that since the listener is set up after the AdsWrapper init call, an initialization callback might be missed by our Haxe code
 		#if chartboostads
 		AdsWrapper.setListener(new SimpleChartboostListener(this));
 		addText("Set Chartboost listener");

@@ -15,34 +15,20 @@ import extension.admob.AdMobGravity;
 class AdsWrapper {
 	public static function init():Void {
 		#if chartboostads
-		#if android
-		Chartboost.init(); // For Android you set the appID and appSignature in your Project.xml
-		#end
-		#if ios
-		// Enter your app id and app signature here for iOS! Enter your ids in your Project.xml for Android
-		var appId: String = "YOUR_ID";
-		var appSignature:String = "YOUR_SIG";
-		if (appId == "YOUR_ID" || appSignature == "YOUR_SIG") {
-			throw "You have not added your Chartboost iOS app id or app signature. Add them in AdsWrapper.hx!";
-		}
-		Chartboost.init(appId, appSignature);
-		#end
 		// Configure the Chartboost SDK
 		var shouldRequestInterstitials = true;
 		var willPrefetchVideos = true;
 		var willHideSystemUI = true;
-		var willDisplayLoadingView = false;
 		var customPostId = "HAXEFLIXEL_DEMO_APP";
 		trace("Will show interstitials in first session: " + shouldRequestInterstitials);
 		trace("Will prefetch video content: " + willPrefetchVideos);
 		trace("Will hide system UI for ads: " + willHideSystemUI);
-		trace("Will display loading view for more apps: " + willDisplayLoadingView);
 		trace("Will use custom POST id: " + customPostId);
 		Chartboost.setShouldRequestInterstitialsInFirstSession(shouldRequestInterstitials);
 		Chartboost.setShouldPrefetchVideoContent(willPrefetchVideos);
 		Chartboost.setShouldHideSystemUI(willHideSystemUI);
-		Chartboost.setShouldDisplayLoadingViewForMoreApps(willDisplayLoadingView);
 		Chartboost.setCustomId(customPostId);
+		Chartboost.restrictDataCollection(false);
 		#end
 		
 		#if admobads
@@ -123,26 +109,6 @@ class AdsWrapper {
 		return false;
 	}
 	
-	public static function showMoreApps(id:String):Void {
-		#if chartboostads
-		Chartboost.showMoreApps(id);
-		#end
-	}
-	
-	public static function cacheMoreApps(id:String):Void {
-		#if chartboostads
-		Chartboost.cacheMoreApps(id);
-		#end
-	}
-	
-	public static function hasMoreApps(id:String):Bool {
-		#if chartboostads
-		return Chartboost.hasMoreApps(id);
-		#end
-		
-		return false;
-	}
-	
 	public static function showRewardedVideo(id:String):Void {
 		#if chartboostads
 		Chartboost.showRewardedVideo(id);
@@ -169,7 +135,7 @@ class AdsWrapper {
 		#end
 		
 		#if admobads
-		// TODO
+		// Doesn't exist - todo?
 		#end
 	}
 }

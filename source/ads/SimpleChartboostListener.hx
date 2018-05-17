@@ -42,6 +42,10 @@ class SimpleChartboostListener extends ChartboostListener {
 		resumeGame();
 	}
 	
+	override public function willDisplayInterstitial(location:String):Void {
+		log("willDisplayInterstitial: [" + location + "]");
+	}
+	
 	override public function didDismissInterstitial(location:String):Void {
 		log("didDismissInterstitial: [" + location + "]");
 		resumeGame(); // Note that both didDismissInterstitial and didCloseInterstitial get called when closing an ad normally
@@ -62,42 +66,6 @@ class SimpleChartboostListener extends ChartboostListener {
 	
 	override public function didDisplayInterstitial(location:String):Void {
 		log("didDisplayInterstitial: [" + location + "]");
-	}
-	
-	override public function shouldRequestMoreApps(location:String):Void {
-		log("shouldRequestMoreApps: [" + location + "]");
-	}
-	
-	override public function shouldDisplayMoreApps(location:String):Void {
-		log("shouldDisplayMoreApps: [" + location + "]");
-	}
-	
-	override public function didFailToLoadMoreApps(location:String, error:Int):Void {
-		log("didFailToLoadMoreApps: [" + location + "] [" + ChartboostError.descriptionForImpressionError(error) + "]");
-		resumeGame();
-	}
-	
-	override public function didCacheMoreApps(location:String):Void {
-		log("didCacheMoreApps: [" + location + "]");
-	}
-	
-	override public function didDismissMoreApps(location:String):Void {
-		log("didDismissMoreApps: [" + location + "]");
-		resumeGame();
-	}
-	
-	override public function didCloseMoreApps(location:String):Void {
-		log("didCloseMoreApps: [" + location + "]");
-		resumeGame();
-	}
-	
-	override public function didClickMoreApps(location:String):Void {
-		log("didClickMoreApps: [" + location + "]");
-		resumeGame();
-	}
-	
-	override public function didDisplayMoreApps(location:String):Void {
-		log("didDisplayMoreApps: [" + location + "]");
 	}
 	
 	override public function didFailToRecordClick(uri:String, error:Int):Void {

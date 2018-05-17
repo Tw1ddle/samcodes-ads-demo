@@ -33,18 +33,14 @@ AdMob.init("YOUR_HASHED_TEST_DEVICE_ID_GOES_HERE");
 ## Chartboost
 To use test ads, first ensure "test mode" is enabled on your Chartboost app dashboard.
 
-Fill in your app identifier and signature. For Android add it to ```Project.xml```:
+Set the app identifier and signature in the Project.xml file:
 ```xml
-<setenv name="ChartboostAppId" value="your_app_id" />
-<setenv name="ChartboostAppSignature" value="your_app_signature" />
+<!-- Enter your app id and app signatures here -->
+<setenv name="ChartboostAppId" value="YOUR_ID" if="android" />
+<setenv name="ChartboostAppSignature" value="YOUR_SIG" if="android" />
+<haxeflag name="ChartboostAppId" value="YOUR_ID" if="ios" />
+<haxeflag name="ChartboostAppSignature" value="YOUR_SIG" if="ios" />
 ```
-For iOS pass the app identifier and signature into the Chartboost init call:
-```haxe
-// In AdsWrapper.hx
-Chartboost.init("your_app_id", "your_app_signature");
-```
-
-------
 
 ## Set Ad Ids
 
@@ -74,5 +70,5 @@ AdMob banner ad:
 ![](screenshots/admob-banner.png?raw=true)
 
 ## Notes
- * For building on iOS, you need to drag the ads library file e.g. ```libChartboost.a``` into the "link binaries with libraries" section under the "build phases" tab in Xcode. Also double check that all required frameworks are included.
+ * For building on iOS, you need to drag the ads library framework file e.g. ```Chartboost``` into the "link binaries with libraries" section under the "build phases" tab in Xcode. Also double check that all required frameworks are included.
  * Run the JavaScript build [here](https://tw1ddle.github.io/samcodes-ads-demo/index.html). There's no web ad support yet.

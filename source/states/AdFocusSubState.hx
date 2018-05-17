@@ -9,7 +9,6 @@ import flixel.util.FlxTimer;
 enum FocusStealingAdType {
 	STATIC_INTERSTITIAL;
 	VIDEO_INTERSTITIAL;
-	MORE_APPS_PAGE;
 }
 
 class AdFocusSubState extends FlxSubState {
@@ -90,12 +89,6 @@ class AdFocusSubState extends FlxSubState {
 					case VIDEO_INTERSTITIAL:
 						if (AdsWrapper.hasRewardedVideo(location)) {
 							AdsWrapper.showRewardedVideo(location);
-						} else {
-							closeDueToNoCaching();
-						}
-					case MORE_APPS_PAGE:
-						if (AdsWrapper.hasMoreApps(location)) {
-							AdsWrapper.showMoreApps(location);
 						} else {
 							closeDueToNoCaching();
 						}

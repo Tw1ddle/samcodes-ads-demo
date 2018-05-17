@@ -20,8 +20,6 @@ class SampleSubState extends FlxSubState {
 	private var buttonsGroup: FlxTypedSpriteGroup<TextButton>;
 	private var cacheInterstitialButton: TextButton;
 	private var showInterstitialButton: TextButton;
-	private var cacheMoreAppsButton: TextButton;
-	private var showMoreAppsButton: TextButton;
 	private var cacheRewardedVideoButton: TextButton;
 	private var showRewardedVideoButton: TextButton;
 	private var clearTextLogButton: TextButton;
@@ -49,8 +47,6 @@ class SampleSubState extends FlxSubState {
 			changeBannerPositionButton = new TextButton(0, 0, "Random Banner Position", onChangeBannerPositionClick);
 			cacheInterstitialButton = new TextButton(0, 0, "Cache Interstitial", onCacheInterstitialClick);
 			showInterstitialButton = new TextButton(0, 0, "Show Interstitial", onShowInterstitialClick);
-			cacheMoreAppsButton = new TextButton(0, 0, "Cache More Apps", onCacheMoreAppsClick);
-			showMoreAppsButton = new TextButton(0, 0, "Show More Apps", onShowMoreAppsClick);
 			cacheRewardedVideoButton = new TextButton(0, 0, "Cache Video", onCacheRewardedVideoClick);
 			showRewardedVideoButton = new TextButton(0, 0, "Show Video", onShowRewardedVideoClick);
 			clearTextLogButton = new TextButton(0, 0, "Clear Text Log", onClearTextLogClick);
@@ -58,7 +54,7 @@ class SampleSubState extends FlxSubState {
 			var buttons:Array<TextButton> = [];
 			
 			#if chartboostads
-			buttons = [cacheInterstitialButton, showInterstitialButton, cacheMoreAppsButton, showMoreAppsButton, cacheRewardedVideoButton, showRewardedVideoButton, clearTextLogButton];
+			buttons = [cacheInterstitialButton, showInterstitialButton, cacheRewardedVideoButton, showRewardedVideoButton, clearTextLogButton];
 			#elseif admobads
 			buttons = [cacheInterstitialButton, showInterstitialButton, refreshBannerButton, showBannerButton, hideBannerButton, changeBannerPositionButton, clearTextLogButton];
 			#end
@@ -77,10 +73,10 @@ class SampleSubState extends FlxSubState {
 			buttonsGroup.y = FlxG.height * 0.75;
 			add(buttonsGroup);
 			
-			#if (ios || android)
+			#if ((ios || android) && (admobads || chartboostads))
 			var msg:String = "Game Substate";
 			#else
-			var msg:String = "Build against Android or iOS targets! Set ad ids in AdLocations.hx!";
+			var msg:String = "Usage instructions:\n1) Set the ad SDK to use at the top of Project.xml\n2)Build against Android or iOS targets\n3) Set ad ids in AdLocations.hx";
 			#end
 			
 			var substateText:TextItem = new TextItem(0, 0, msg, 16);
@@ -98,17 +94,6 @@ class SampleSubState extends FlxSubState {
 	private function onShowInterstitialClick():Void {
 		game.adFocusSubState.adType = FocusStealingAdType.STATIC_INTERSTITIAL;
 		game.adFocusSubState.location = AdLocations.SAMPLE_INTERSTITIAL_LOCATION;
-		game.adFocusSubState.init();
-		game.openSubState(game.adFocusSubState);
-	}
-	
-	private function onCacheMoreAppsClick():Void {
-		AdsWrapper.cacheMoreApps(AdLocations.SAMPLE_MORE_APPS_LOCATION);
-	}
-	
-	private function onShowMoreAppsClick():Void {
-		game.adFocusSubState.adType = FocusStealingAdType.MORE_APPS_PAGE;
-		game.adFocusSubState.location = AdLocations.SAMPLE_MORE_APPS_LOCATION;
 		game.adFocusSubState.init();
 		game.openSubState(game.adFocusSubState);
 	}
