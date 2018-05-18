@@ -42,11 +42,10 @@
 		<include path="lib/samcodes-chartboost/include.xml" />
 		<!-- <haxelib name="samcodes-chartboost" /> -->
 		
-		<!-- Enter your app id and app signatures here -->
+		<!-- Enter your app id and app signatures here for Android -->
+		<!-- Enter them in Chartboost.init(appId, appSignature) in AdsWrapper.hx for iOS -->
 		<setenv name="ChartboostAppId" value="YOUR_ID" if="android" />
 		<setenv name="ChartboostAppSignature" value="YOUR_SIG" if="android" />
-		<set name="ChartboostAppId" value="YOUR_ID" if="ios" />
-		<set name="ChartboostAppSignature" value="YOUR_SIG" if="ios" />
 	</section>
 	
 	<section if="admobads">

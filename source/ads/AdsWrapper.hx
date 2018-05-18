@@ -15,6 +15,18 @@ import extension.admob.AdMobGravity;
 class AdsWrapper {
 	public static function init():Void {
 		#if chartboostads
+		
+		#if ios
+		var appId:String = "YOUR_APP_ID_HERE";
+		var appSignature:String = "YOUR_APP_SIGNATURE_HERE";
+		
+		if (appId == "YOUR_APP_ID_HERE" || appSignature == "YOUR_APP_SIGNATURE_HERE") {
+			throw "Enter your Chartboost app id and signature for iOS in AdsWrapper.hx!";
+		}
+		
+		Chartboost.initChartboost(appId, appSignature);
+		#end
+		
 		// Configure the Chartboost SDK
 		var shouldRequestInterstitials = true;
 		var willPrefetchVideos = true;
