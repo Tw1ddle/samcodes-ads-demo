@@ -25,7 +25,7 @@ install:
 
 # Build the ads haxelibs, then build the demo
 script:
-  # Build for regular targets with no ad SDKs setup
+  # Build for regular targets with no ad SDKs set up
   - haxelib run openfl build "Project.xml" flash
   - haxelib run openfl build "Project.xml" html5 -minify -release
   
@@ -36,9 +36,11 @@ script:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
     pushd lib/samcodes-chartboost/project;
     chmod +x rebuild_ndlls.sh;
+    ./rebuild_ndlls.sh;
     popd;
     pushd lib/samcodes-admob/project;
     chmod +x rebuild_ndlls.sh;
+    ./rebuild_ndlls.sh;
     popd;
     fi
 
