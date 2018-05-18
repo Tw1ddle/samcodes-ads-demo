@@ -38,6 +38,9 @@ script:
     chmod +x rebuild_ndlls.sh;
     ./rebuild_ndlls.sh;
     popd;
+    fi
+
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
     pushd lib/samcodes-admob/project;
     chmod +x rebuild_ndlls.sh;
     ./rebuild_ndlls.sh;

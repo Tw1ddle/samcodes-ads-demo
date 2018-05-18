@@ -45,8 +45,8 @@
 		<!-- Enter your app id and app signatures here -->
 		<setenv name="ChartboostAppId" value="YOUR_ID" if="android" />
 		<setenv name="ChartboostAppSignature" value="YOUR_SIG" if="android" />
-		<haxedef name="ChartboostAppId" value="YOUR_ID" if="ios" />
-		<haxedef name="ChartboostAppSignature" value="YOUR_SIG" if="ios" />
+		<set name="ChartboostAppId" value="YOUR_ID" if="ios" />
+		<set name="ChartboostAppSignature" value="YOUR_SIG" if="ios" />
 	</section>
 	
 	<section if="admobads">
