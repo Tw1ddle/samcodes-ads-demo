@@ -23,12 +23,25 @@ install:
   - haxelib install openfl
   - haxelib install flixel
 
-# Build the demo
+# Build the ads haxelibs, then build the demo
 script:
+  # Build for regular targets with no ad SDKs setup
   - haxelib run openfl build "Project.xml" flash
   - haxelib run openfl build "Project.xml" html5 -minify -release
+  
   #- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then haxelib run openfl build "Project.xml" android -D chartboostads ; fi # Would have to install Android SDK, NDK etc
   #- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then haxelib run openfl build "Project.xml" android -D admobads ; fi # Would have to install Android SDK, NDK etc
+  
+  # Build the ads haxelib ndlls for iOS
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+    pushd lib/samcodes-chartboost/project;
+    chmod +x rebuild_ndlls.sh;
+    popd;
+    pushd lib/samcodes-admob/project;
+    chmod +x rebuild_ndlls.sh;
+    popd;
+    fi
+
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then haxelib run openfl build "Project.xml" ios -simulator -D chartboostads ; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then haxelib run openfl build "Project.xml" ios -simulator -D admobads ; fi
 
