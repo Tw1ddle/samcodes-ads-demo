@@ -25,12 +25,12 @@ install:
 
 # Build the demo
 script:
-  - haxelib run openfl build "Project.xml" flash
-  - haxelib run openfl build "Project.xml" html5 -minify -release
-  #- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then haxelib run openfl build "Project.xml" android -D chartboostads ; fi # Would have to install Android SDK, NDK etc
-  #- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then haxelib run openfl build "Project.xml" android -D admobads ; fi # Would have to install Android SDK, NDK etc
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then haxelib run openfl build "Project.xml" ios -D chartboostads ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then haxelib run openfl build "Project.xml" ios -D admobads ; fi
+  - haxelib run lime build "Project.xml" flash
+  - haxelib run lime build "Project.xml" html5 -minify -release
+  #- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then haxelib run lime build "Project.xml" android -D chartboostads ; fi # Would have to install Android SDK, NDK etc
+  #- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then haxelib run lime build "Project.xml" android -D admobads ; fi # Would have to install Android SDK, NDK etc
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then haxelib run lime build "Project.xml" ios -D chartboostads ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then haxelib run lime build "Project.xml" ios -D admobads ; fi
 
 # Deploy the generated demo using Travis builtin GitHub Pages support
 deploy:
