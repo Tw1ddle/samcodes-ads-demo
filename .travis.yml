@@ -1,15 +1,18 @@
-sudo: required
-dist: trusty
-
 language: haxe
 
 # Add encrypted API key
 env:
   global:
     - secure: n7y+BhS7peRrdnDQx1hH087y1n4XTRdY/5iRQgEVNa38KL5bUDgWKD5eOZMN5bGJQTupzosoyyFftBb43WKHZiBwmbTFflj9LIES2ZGzZDmHi8yo0jT56I6bruKfsAumt1LjgTLu5cZgCRD3FFwlp/Shmm++G0LmbpVd46vFMrKBktmNJnG/7KFA/Ngds5oRq2Klf0VgQdtw2Tc1QIHX/7oV/NltmcWcsyyXYprddN8PTEuibfSGALQunnLHZfSpSHYByiImdoLD32jvP0GwMK8cOEyl5qjW8bFWmkMZffPesrX0w856bpsWpX6XtiX16xNm9Kb21CDizMbKxQQtP7cVgw9MxlubURN5C6Psp9BDIEXbeB9yGFMQZTNTzY5PZLtJ7ciIuk0D1OKr2naPLjddz7RHxKxmZSg7eZcNCBNFPV9RrZtWaYyH9Ue/t/8wFXpTR48K5PbWd5Y+A9uNL7K1tOSd1oSv/Tz7/BTQLFwA+mZJIPHJvLCPXlWOlTjrqWNABmZYTNTLySrPDRUncONdhxeZWiWQEZ4NfjFcHoabUKIz5hljxT9/zA6bjFtB8SNKWDusXMGc8BgTTHrwg6NRUJMIZXFG9LBFrz05m8m1fb86zpaQZP2yIPoweqNLHfAvGZ2VAHPMBHB536j6yTT8fkt/Jml7opyHjP2FQtA=
-os:
-  - linux
-  - osx
+
+matrix:
+  include:
+    - os: linux
+      sudo: required
+      dist: trusty
+    - os: osx
+      osx_image: xcode9.3
+    
 
 # Blacklist
 branches:

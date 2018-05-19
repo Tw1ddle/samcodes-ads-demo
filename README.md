@@ -3,20 +3,20 @@
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](https://github.com/Tw1ddle/samcodes-ads-demo/blob/master/LICENSE)
 [![Build Status](https://img.shields.io/travis/Tw1ddle/samcodes-ads-demo.svg?style=flat-square)](https://travis-ci.org/Tw1ddle/samcodes-ads-demo)
 
-Demo app of [AdMob](https://github.com/Tw1ddle/samcodes-admob) and [Chartboost](https://github.com/Tw1ddle/samcodes-chartboost) ads haxelibs for Android and iOS OpenFL targets.
+Demo of [AdMob](https://github.com/Tw1ddle/samcodes-admob) and [Chartboost](https://github.com/Tw1ddle/samcodes-chartboost) ads haxelibs for Android and iOS OpenFL targets.
 
 ## Usage
 
-This demo uses HaxeFlixel and my ads haxelibs, so install these first:
+This demo app uses HaxeFlixel and my ads haxelibs, so install these first:
 ```bash
 haxelib install flixel
-haxelib install samcodes-admob # Also see samcodes-admob submodule in this repo
-haxelib install samcodes-chartboost # Also see samcodes-chartboost submodule in this repo
+haxelib install samcodes-admob # Or use lib/samcodes-admob submodule in the repo
+haxelib install samcodes-chartboost # Or use lib/samcodes-chartboost submodule in the repo
 ```
 
 Configure the ```<set>``` tags at the top of ```Project.xml``` for the ads platform you want to use, then follow these steps for the one you selected:
 
-## AdMob
+### AdMob
 To use test mode ads, enter your hashed device id. Refer to the AdMob documentation for instructions.
 
 For Android set it in ```Project.xml```:
@@ -30,22 +30,23 @@ For iOS pass the id in the AdMob init method:
 AdMob.init("YOUR_HASHED_TEST_DEVICE_ID_GOES_HERE");
 ```
 
-## Chartboost
+### Chartboost
 To use test ads, first ensure "test mode" is enabled on your Chartboost app dashboard.
 
-For Android, set the app identifier and signature in the Project.xml file:
+For Android set the app identifier and signature in the Project.xml file:
 ```xml
 <!-- Enter your app id and app signatures here -->
 <setenv name="ChartboostAppId" value="YOUR_ID" if="android" />
 <setenv name="ChartboostAppSignature" value="YOUR_SIG" if="android" />
 ```
 
-For iOS, pass the app identifier and signature in AdsWrapper.hx:
+For iOS pass the app identifier and signature in the Chartboost init method:
 ```haxe
+// In AdsWrapper.hx
 Chartboost.initChartboost(yourAppId, yourAppSignature);
 ```
 
-## Set Ad Ids
+### Set Ad Ids
 
 App, interstitial and banner ids come unconfigured in this demo. You need to set your own:
 
@@ -73,5 +74,4 @@ AdMob banner ad:
 ![](screenshots/admob-banner.png?raw=true)
 
 ## Notes
- * For building on iOS, you need to drag the ads library framework file e.g. ```Chartboost``` into the "link binaries with libraries" section under the "build phases" tab in Xcode. Also double check that all required frameworks are included.
  * Run the JavaScript build [here](https://tw1ddle.github.io/samcodes-ads-demo/index.html). There's no web ad support yet.
