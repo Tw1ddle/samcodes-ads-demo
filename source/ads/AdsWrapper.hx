@@ -43,13 +43,8 @@ class AdsWrapper {
 		Chartboost.restrictDataCollection(false);
 		#end
 		
-		#if admobads
-		#if android
-		AdMob.init();
-		#end
-		#if ios
-		AdMob.init("YOUR_HASHED_TEST_DEVICE_ID");
-		#end
+		#if (admobads && ios)
+		AdMob.initAdMob("YOUR_HASHED_TEST_DEVICE_ID");
 		#end
 	}
 	
