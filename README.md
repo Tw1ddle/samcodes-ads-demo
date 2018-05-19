@@ -27,7 +27,9 @@ For Android set it in ```Project.xml```:
 For iOS pass the id in the AdMob init method:
 ```haxe
 // In AdsWrapper.hx
-AdMob.init("YOUR_HASHED_TEST_DEVICE_ID_GOES_HERE");
+#if ios
+AdMob.initAdMob("YOUR_HASHED_TEST_DEVICE_ID_GOES_HERE");
+#end
 ```
 
 ### Chartboost
