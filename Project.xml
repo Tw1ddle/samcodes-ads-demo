@@ -59,6 +59,9 @@
 		<!-- Set this if you want to use test ads on a particular device -->
 		<!-- Your test id will appear in logcat. Refer to AdMob documentation -->
 		<setenv name="AdmobTestDeviceId" value="YOUR_HASHED_TEST_DEVICE_ID" />
+		
+		<!-- Set Android SDK version to the minimum required by AdMob -->
+		<android minimum-sdk-version="14" />
 	</section>
 	
 	<!---------------------------------HAXEDEFINES---------------------------------->
