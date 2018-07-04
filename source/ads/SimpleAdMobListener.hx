@@ -30,17 +30,14 @@ class SimpleAdMobListener extends AdMobListener {
 	
 	override public function onBannerClosed(unitId:String):Void {
 		log("onBannerClosed " + unitId);
-		resumeGame();
 	}
 	
 	override public function onBannerFailedToLoad(unitId:String):Void {
 		log("onBannerFailedToLoad " + unitId);
-		resumeGame();
 	}
 	
 	override public function onBannerLeftApplication(unitId:String):Void {
 		log("onBannerLeftApplication " + unitId);
-		resumeGame();
 	}
 	
 	override public function onBannerOpened(unitId:String):Void {
