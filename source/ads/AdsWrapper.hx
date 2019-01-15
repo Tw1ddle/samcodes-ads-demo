@@ -142,7 +142,7 @@ class AdsWrapper {
 		#end
 		
 		#if admobads
-		// Doesn't exist - todo?
+		// Doesn't exist
 		#end
 	}
 }

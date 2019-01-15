@@ -76,7 +76,7 @@ class SampleSubState extends FlxSubState {
 			#if ((ios || android) && (admobads || chartboostads))
 			var msg:String = "Game Substate";
 			#else
-			var msg:String = "Usage instructions:\n1) Set the ad SDK to use at the top of Project.xml\n2)Build against Android or iOS targets\n3) Set ad ids in AdLocations.hx";
+			var msg:String = "Usage instructions:\n1) Set the ad SDK to use at the top of Project.xml\n2) Build against Android or iOS targets\n3) Set ad ids in AdLocations.hx";
 			#end
 			
 			var substateText:TextItem = new TextItem(0, 0, msg, 16);
