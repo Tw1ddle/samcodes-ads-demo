@@ -3,7 +3,7 @@
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](https://github.com/Tw1ddle/samcodes-ads-demo/blob/master/LICENSE)
 [![Build Status](https://img.shields.io/travis/Tw1ddle/samcodes-ads-demo.svg?style=flat-square)](https://travis-ci.org/Tw1ddle/samcodes-ads-demo)
 
-Demo of [AdMob](https://github.com/Tw1ddle/samcodes-admob) and [Chartboost](https://github.com/Tw1ddle/samcodes-chartboost) ads haxelibs for Android and iOS OpenFL targets.
+Demo of [AdMob](https://github.com/Tw1ddle/samcodes-admob) and [Chartboost](https://github.com/Tw1ddle/samcodes-chartboost) ads haxelibs for Android and iOS Haxe OpenFL targets.
 
 ## Usage
 
@@ -35,14 +35,7 @@ AdMob.initAdMob("YOUR_HASHED_TEST_DEVICE_ID_GOES_HERE");
 ### Chartboost
 To use test ads, first ensure "test mode" is enabled on your Chartboost app dashboard.
 
-For Android set the app identifier and signature in the Project.xml file:
-```xml
-<!-- Enter your app id and app signatures here -->
-<setenv name="ChartboostAppId" value="YOUR_ID" if="android" />
-<setenv name="ChartboostAppSignature" value="YOUR_SIG" if="android" />
-```
-
-For iOS pass the app identifier and signature in the Chartboost init method:
+For both Android and iOS pass the app identifier and signature in the Chartboost init method:
 ```haxe
 // In AdsWrapper.hx
 Chartboost.initChartboost(yourAppId, yourAppSignature);

@@ -2,6 +2,7 @@ package ads;
 
 #if chartboostads
 import extension.chartboost.Chartboost;
+import extension.chartboost.ChartboostConsent;
 import extension.chartboost.ChartboostListener;
 #end
 
@@ -16,16 +17,14 @@ class AdsWrapper {
 	public static function init():Void {
 		#if chartboostads
 		
-		#if ios
 		var appId:String = "YOUR_APP_ID_HERE";
 		var appSignature:String = "YOUR_APP_SIGNATURE_HERE";
 		
 		if (appId == "YOUR_APP_ID_HERE" || appSignature == "YOUR_APP_SIGNATURE_HERE") {
-			throw "Enter your Chartboost app id and signature for iOS in AdsWrapper.hx!";
+			throw "Enter your Chartboost app id and signature in AdsWrapper.hx!";
 		}
 		
 		Chartboost.initChartboost(appId, appSignature);
-		#end
 		
 		// Configure the Chartboost SDK
 		var shouldRequestInterstitials = true;
@@ -40,7 +39,8 @@ class AdsWrapper {
 		Chartboost.setShouldPrefetchVideoContent(willPrefetchVideos);
 		Chartboost.setShouldHideSystemUI(willHideSystemUI);
 		Chartboost.setCustomId(customPostId);
-		Chartboost.restrictDataCollection(false);
+		Chartboost.setPIDataUseConsent(ChartboostConsent.YES_BEHAVIORAL);
+		
 		#end
 		
 		#if (admobads && ios)
