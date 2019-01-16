@@ -34,9 +34,17 @@
 	
 	<haxelib name="flixel" />
 	
+	<!-- Set Android SDK version to the minimum required by AdMob/Chartboost -->
+	<android minimum-sdk-version="16" />
+	
 	<section if="chartboostads">
 		<setenv name="CHARTBOOSTADS" />
 		<haxedef name="chartboostads" />
+		
+		<!-- Set the play services versions that Chartboost depends on. These default to the latest installed -->
+		<!-- <set name="playServicesBaseVersion" value="+" /> -->
+		<!-- Note that higher versions seem to demand an AdMob App ID and crash, not sure why that happens -->
+		<set name="playServicesAdsVersion" value="16.0.0" />
 		
 		<!-- Change this line to the version of the Chartboost haxelib you want to build against! -->
 		<include path="lib/samcodes-chartboost/include.xml" />
@@ -59,9 +67,6 @@
 		<!-- Set this if you want to use test ads on a particular device -->
 		<!-- Your test id will appear in logcat. Refer to AdMob documentation -->
 		<setenv name="AdmobTestDeviceId" value="YOUR_HASHED_TEST_DEVICE_ID" />
-		
-		<!-- Set Android SDK version to the minimum required by AdMob/Chartboost -->
-		<android minimum-sdk-version="16" />
 	</section>
 	
 	<!---------------------------------HAXEDEFINES---------------------------------->

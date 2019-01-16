@@ -13,16 +13,23 @@ import states.PlayState;
 import extension.admob.AdMobGravity;
 #end
 
+#if chartboostads
+import extension.chartboost.Chartboost;
+import extension.chartboost.ChartboostConsent;
+#end
+
 class SampleSubState extends FlxSubState {
 	private var created: Bool = false;
 	private var game: PlayState;
 	
 	private var buttonsGroup: FlxTypedSpriteGroup<TextButton>;
-	private var cacheInterstitialButton: TextButton;
-	private var showInterstitialButton: TextButton;
-	private var cacheRewardedVideoButton: TextButton;
-	private var showRewardedVideoButton: TextButton;
-	private var clearTextLogButton: TextButton;
+	private var cacheInterstitialButton:TextButton;
+	private var showInterstitialButton:TextButton;
+	private var cacheRewardedVideoButton:TextButton;
+	private var showRewardedVideoButton:TextButton;
+	private var getGDPRConsentStateButton:TextButton;
+	private var setGDPRConsentStateButton:TextButton;
+	private var clearTextLogButton:TextButton;
 	private var refreshBannerButton:TextButton;
 	private var showBannerButton:TextButton;
 	private var hideBannerButton:TextButton;
@@ -49,12 +56,15 @@ class SampleSubState extends FlxSubState {
 			showInterstitialButton = new TextButton(0, 0, "Show Interstitial", onShowInterstitialClick);
 			cacheRewardedVideoButton = new TextButton(0, 0, "Cache Video", onCacheRewardedVideoClick);
 			showRewardedVideoButton = new TextButton(0, 0, "Show Video", onShowRewardedVideoClick);
+			getGDPRConsentStateButton = new TextButton(0, 0, "Get GDPR Consent", onGetGDPRConsentButtonClick);
+			setGDPRConsentStateButton = new TextButton(0, 0, "Set GDPR Coonsent", onSetGDPRConsentButtonClick);
+			
 			clearTextLogButton = new TextButton(0, 0, "Clear Text Log", onClearTextLogClick);
 			
 			var buttons:Array<TextButton> = [];
 			
 			#if chartboostads
-			buttons = [cacheInterstitialButton, showInterstitialButton, cacheRewardedVideoButton, showRewardedVideoButton, clearTextLogButton];
+			buttons = [cacheInterstitialButton, showInterstitialButton, cacheRewardedVideoButton, showRewardedVideoButton, getGDPRConsentStateButton, setGDPRConsentStateButton, clearTextLogButton];
 			#elseif admobads
 			buttons = [cacheInterstitialButton, showInterstitialButton, refreshBannerButton, showBannerButton, hideBannerButton, changeBannerPositionButton, clearTextLogButton];
 			#end
@@ -107,6 +117,33 @@ class SampleSubState extends FlxSubState {
 		game.adFocusSubState.location = AdLocations.SAMPLE_REWARDED_VIDEO_LOCATION;
 		game.adFocusSubState.init();
 		game.openSubState(game.adFocusSubState);
+	}
+	
+	private function onGetGDPRConsentButtonClick():Void {
+		#if chartboostads
+		var consent = Chartboost.getPIDataUseConsent();
+		switch(consent) {
+			case ChartboostConsent.UNKNOWN:
+				game.addText("Got UNKNOWN Chartboost GDPR consent state");
+			case ChartboostConsent.NO_BEHAVIORAL:
+				game.addText("Got NO BEHAVIORAL Chartboost GDPR consent state");
+			case ChartboostConsent.YES_BEHAVIORAL:
+				game.addText("Got YES BEHAVIORAL Chartboost GDPR consent state");
+			default:
+				game.addText("Got invalid Chartboost GDPR consent state");
+		}
+		#end
+	}
+	
+	#if chartboostads
+	private var lastSetConsentState:ChartboostConsent = ChartboostConsent.NO_BEHAVIORAL;
+	#end
+	private function onSetGDPRConsentButtonClick():Void {
+		#if chartboostads
+		Chartboost.setPIDataUseConsent(lastSetConsentState);
+		game.addText("Set consent state to: " + lastSetConsentState);
+		lastSetConsentState = (lastSetConsentState == ChartboostConsent.NO_BEHAVIORAL) ? ChartboostConsent.YES_BEHAVIORAL : ChartboostConsent.NO_BEHAVIORAL;
+		#end
 	}
 	
 	private function onChangeBannerPositionClick():Void {
