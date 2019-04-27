@@ -17,6 +17,7 @@ class AdsWrapper {
 	public static function init():Void {
 		#if chartboostads
 		
+		#if ios
 		var appId:String = "YOUR_APP_ID_HERE";
 		var appSignature:String = "YOUR_APP_SIGNATURE_HERE";
 		
@@ -25,6 +26,7 @@ class AdsWrapper {
 		}
 		
 		Chartboost.initChartboost(appId, appSignature);
+		#end
 		
 		// Configure the Chartboost SDK
 		var shouldRequestInterstitials = true;
