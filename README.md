@@ -35,13 +35,7 @@ AdMob.initAdMob("YOUR_HASHED_TEST_DEVICE_ID_GOES_HERE");
 ### Chartboost
 To use test ads, first ensure "test mode" is enabled on your Chartboost app dashboard.
 
-On Android, simply set the app identifier and signature in your project settings:
-```xml
-<setenv name="ChartboostAppId" value="YOUR_ID" if="android" />
-<setenv name="ChartboostAppSignature" value="YOUR_SIG" if="android" />
-```
-
-On iOS, pass the app identifier and signature in when initializing Chartboost:
+On Android and iOS, pass the app identifier and signature in when initializing Chartboost:
 ```haxe
 Chartboost.initChartboost(yourAppId, yourAppSignature);
 ```
