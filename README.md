@@ -32,9 +32,6 @@ App, interstitial and banner ids come unconfigured in this demo. You need to set
 #if chartboostads
 // Chartboost locations have custom names - they can be whatever you want e.g.
 public static inline var SAMPLE_INTERSTITIAL_LOCATION:String = "my_cb_interstitial";
-#elseif admobads
-// AdMob locations are taken from your AdMob dashboard e.g.
-public static inline var DEMO_BANNER_LOCATION:String = "ca-app-pub-2600848144826429/9144221192";
 #end
 ```
 
