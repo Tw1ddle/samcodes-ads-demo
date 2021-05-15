@@ -23,15 +23,12 @@ class AdsWrapper {
 		// Configure the Chartboost SDK
 		var shouldRequestInterstitials = true;
 		var willPrefetchVideos = true;
-		var willHideSystemUI = true;
 		var customPostId = "HAXEFLIXEL_DEMO_APP";
 		trace("Will show interstitials in first session: " + shouldRequestInterstitials);
 		trace("Will prefetch video content: " + willPrefetchVideos);
-		trace("Will hide system UI for ads: " + willHideSystemUI);
 		trace("Will use custom POST id: " + customPostId);
 		Chartboost.setShouldRequestInterstitialsInFirstSession(shouldRequestInterstitials);
 		Chartboost.setShouldPrefetchVideoContent(willPrefetchVideos);
-		Chartboost.setShouldHideSystemUI(willHideSystemUI);
 		Chartboost.setCustomId(customPostId);
 		Chartboost.setPIDataUseConsent(ChartboostConsent.YES_BEHAVIORAL);
 		
