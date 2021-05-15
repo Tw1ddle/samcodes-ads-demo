@@ -83,10 +83,4 @@ class AdsWrapper {
 		
 		return false;
 	}
-	
-	public static function closeImpression():Void {
-		#if (chartboostads)
-		Chartboost.closeImpression();
-		#end
-	}
 }
