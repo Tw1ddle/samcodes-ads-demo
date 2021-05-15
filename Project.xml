@@ -46,6 +46,11 @@
 		<!-- Change this line to the version of the Chartboost haxelib you want to build against! -->
 		<include path="lib/samcodes-chartboost/include.xml" />
 		<!-- <haxelib name="samcodes-chartboost" /> -->
+
+		<!-- Custom plist file including ad network ids for iOS -->
+		<section if="ios">
+			<template path="template/HaxeAdsDemo-Info.plist" rename="HaxeAdsDemo-Info.plist" />
+		</section>
 	</section>
 	
 	<!---------------------------------HAXEDEFINES---------------------------------->
