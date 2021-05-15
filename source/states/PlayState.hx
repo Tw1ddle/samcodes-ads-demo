@@ -1,7 +1,6 @@
 package states;
 
 import ads.AdsWrapper;
-import ads.SimpleAdMobListener;
 import ads.SimpleChartboostListener;
 import flixel.FlxState;
 import flixel.util.FlxColor;
