@@ -54,7 +54,6 @@ class AdFocusSubState extends FlxSubState {
 		}
 		if (currentTaps >= tapsToExit) {
 			game.addText("Closing ad focus substate because user is probably stuck.");
-			AdsWrapper.closeImpression();
 			presentingTimer.cancel();
 			close();
 			game.openSubState(game.sampleSubState);
