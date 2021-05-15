@@ -26,10 +26,6 @@ class SampleSubState extends FlxSubState {
 	private var getGDPRConsentStateButton:TextButton;
 	private var setGDPRConsentStateButton:TextButton;
 	private var clearTextLogButton:TextButton;
-	private var refreshBannerButton:TextButton;
-	private var showBannerButton:TextButton;
-	private var hideBannerButton:TextButton;
-	private var changeBannerPositionButton:TextButton;
 	
 	public function new(game:PlayState) {
 		super();
@@ -44,10 +40,6 @@ class SampleSubState extends FlxSubState {
 		if(!created) {
 			buttonsGroup = new FlxTypedSpriteGroup<TextButton>();
 			
-			refreshBannerButton = new TextButton(0, 0, "Refresh Banner", onRefreshBannerClick);
-			showBannerButton = new TextButton(0, 0, "Show Banner", onShowBannerClick);
-			hideBannerButton = new TextButton(0, 0, "Hide Banner", onHideBannerClick);
-			changeBannerPositionButton = new TextButton(0, 0, "Random Banner Position", onChangeBannerPositionClick);
 			cacheInterstitialButton = new TextButton(0, 0, "Cache Interstitial", onCacheInterstitialClick);
 			showInterstitialButton = new TextButton(0, 0, "Show Interstitial", onShowInterstitialClick);
 			cacheRewardedVideoButton = new TextButton(0, 0, "Cache Video", onCacheRewardedVideoClick);
@@ -138,18 +130,6 @@ class SampleSubState extends FlxSubState {
 		game.addText("Set consent state to: " + lastSetConsentState);
 		lastSetConsentState = (lastSetConsentState == ChartboostConsent.NO_BEHAVIORAL) ? ChartboostConsent.YES_BEHAVIORAL : ChartboostConsent.NO_BEHAVIORAL;
 		#end
-	}
-	
-	private function onShowBannerClick():Void {
-		AdsWrapper.showBanner(AdLocations.DEMO_BANNER_LOCATION);
-	}
-	
-	private function onHideBannerClick():Void {
-		AdsWrapper.hideBanner(AdLocations.DEMO_BANNER_LOCATION);
-	}
-	
-	private function onRefreshBannerClick():Void {
-		AdsWrapper.refreshBanner(AdLocations.DEMO_BANNER_LOCATION);
 	}
 	
 	private function onClearTextLogClick():Void {
