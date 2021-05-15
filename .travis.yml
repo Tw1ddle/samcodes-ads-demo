@@ -43,13 +43,6 @@ script:
     popd;
     fi
 
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-    pushd lib/samcodes-admob/project;
-    chmod +x rebuild_ndlls.sh;
-    ./rebuild_ndlls.sh;
-    popd;
-    fi
-
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then haxelib run openfl build "Project.xml" ios -simulator -D chartboostads ; fi
 
 # Deploy the generated demo using Travis builtin GitHub Pages support
