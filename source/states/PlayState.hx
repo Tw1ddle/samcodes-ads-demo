@@ -9,10 +9,6 @@ import openfl.Lib;
 import openfl.events.Event;
 import states.SampleSubState;
 
-#if admobads
-import extension.admob.AdMobGravity;
-#end
-
 #if chartboostads
 import extension.chartboost.Chartboost;
 #end
@@ -43,14 +39,6 @@ class PlayState extends FlxState {
 		#if chartboostads
 		AdsWrapper.setListener(new SimpleChartboostListener(this));
 		addText("Set Chartboost listener");
-		#end
-		#if admobads
-		AdsWrapper.setListener(new SimpleAdMobListener(this));
-		addText("Set AdMob listener");
-		#end
-		
-		#if admobads
-		AdsWrapper.setBannerPosition(AdMobHorizontalGravity.CENTER, AdMobVerticalGravity.BOTTOM);
 		#end
 		
 		sampleSubState = new SampleSubState(this);

@@ -1,6 +1,3 @@
 [submodule "lib/samcodes-chartboost"]
 	path = lib/samcodes-chartboost
 	url = https://github.com/Tw1ddle/samcodes-chartboost.git
-[submodule "lib/samcodes-admob"]
-	path = lib/samcodes-admob
-	url = https://github.com/Tw1ddle/samcodes-admob.git

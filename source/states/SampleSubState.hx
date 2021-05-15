@@ -9,10 +9,6 @@ import flixel.util.FlxAxes;
 import states.AdFocusSubState.FocusStealingAdType;
 import states.PlayState;
 
-#if admobads
-import extension.admob.AdMobGravity;
-#end
-
 #if chartboostads
 import extension.chartboost.Chartboost;
 import extension.chartboost.ChartboostConsent;
@@ -65,8 +61,6 @@ class SampleSubState extends FlxSubState {
 			
 			#if chartboostads
 			buttons = [cacheInterstitialButton, showInterstitialButton, cacheRewardedVideoButton, showRewardedVideoButton, getGDPRConsentStateButton, setGDPRConsentStateButton, clearTextLogButton];
-			#elseif admobads
-			buttons = [cacheInterstitialButton, showInterstitialButton, refreshBannerButton, showBannerButton, hideBannerButton, changeBannerPositionButton, clearTextLogButton];
 			#end
 			
 			var x:Float = 0;
@@ -83,7 +77,7 @@ class SampleSubState extends FlxSubState {
 			buttonsGroup.y = FlxG.height * 0.75;
 			add(buttonsGroup);
 			
-			#if ((ios || android) && (admobads || chartboostads))
+			#if ((ios || android) && (chartboostads))
 			var msg:String = "Game Substate";
 			#else
 			var msg:String = "Usage instructions:\n1) Set the ad SDK to use at the top of Project.xml\n2) Build against Android or iOS targets\n3) Set ad ids in AdLocations.hx";
@@ -143,14 +137,6 @@ class SampleSubState extends FlxSubState {
 		Chartboost.setPIDataUseConsent(lastSetConsentState);
 		game.addText("Set consent state to: " + lastSetConsentState);
 		lastSetConsentState = (lastSetConsentState == ChartboostConsent.NO_BEHAVIORAL) ? ChartboostConsent.YES_BEHAVIORAL : ChartboostConsent.NO_BEHAVIORAL;
-		#end
-	}
-	
-	private function onChangeBannerPositionClick():Void {
-		#if admobads
-		var horizontals = [ AdMobHorizontalGravity.LEFT, AdMobHorizontalGravity.CENTER, AdMobHorizontalGravity.RIGHT ];
-		var verticals = [ AdMobVerticalGravity.BOTTOM, AdMobVerticalGravity.CENTER, AdMobVerticalGravity.TOP ];
-		AdsWrapper.setBannerPosition(horizontals[Std.int(Math.random() * horizontals.length) - 1], verticals[Std.int(Math.random() * verticals.length) - 1]);
 		#end
 	}
 	
