@@ -19,13 +19,9 @@ branches:
   only:
     - master
 
-# Get and install nightly hxcpp since 3.4.0 haxelib release is broken for recent iOS
-before_install:
-  - wget http://nmehost.com/releases/hxcpp/hxcpp-3.4.214.zip
-  - haxelib install hxcpp-3.4.214.zip
-
 # Install dependencies
 install:
+  - haxelib install hxcpp
   - haxelib install lime
   - haxelib install openfl
   - haxelib install flixel
@@ -38,8 +34,7 @@ script:
   - haxelib run openfl build "Project.xml" html5 -minify -release
   
   #- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then haxelib run openfl build "Project.xml" android -D chartboostads ; fi # Would have to install Android SDK, NDK etc
-  #- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then haxelib run openfl build "Project.xml" android -D admobads ; fi # Would have to install Android SDK, NDK etc
-  
+
   # Build the ads haxelib ndlls for iOS
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
     pushd lib/samcodes-chartboost/project;
@@ -56,7 +51,6 @@ script:
     fi
 
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then haxelib run openfl build "Project.xml" ios -simulator -D chartboostads ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then haxelib run openfl build "Project.xml" ios -simulator -D admobads ; fi
 
 # Deploy the generated demo using Travis builtin GitHub Pages support
 deploy:
